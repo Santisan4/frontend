@@ -2,11 +2,9 @@ import { Link } from 'react-router-dom'
 import { FavIcon, FilterIcon } from '../../components/Icons'
 import './Products.css'
 import { useState } from 'react'
-import { useProducts } from '../../hooks/useProducts'
 
 export function Products (): JSX.Element {
   const [like, setLike] = useState(false)
-  const { products } = useProducts()
 
   const className = like ? 'fav-icon-container fav-icon-container--active' : ''
 
@@ -42,21 +40,6 @@ export function Products (): JSX.Element {
       </div>
 
       <div className='products-container'>
-
-        <div className='card-container'>
-          {
-            products.map(product => (
-              <div key={product.id} className='card-container'>
-                <Link to='/products/1'> <img src={product.image} alt='' /></Link>
-                <p className='news'>Lo nuevo</p>
-                <strong className='autor'>{product.description}</strong>
-                <p className='name'> {product.name} </p>
-                <strong>${product.price}</strong>
-                <span onClick={handleLike} className={className}><FavIcon /></span>
-              </div>
-            ))
-          }
-        </div>
 
         <div className='card-container'>
           <Link to='/products/1'> <img src='/bermuda.jpeg' alt='' /></Link>
