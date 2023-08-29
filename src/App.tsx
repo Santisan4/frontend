@@ -14,7 +14,6 @@ import { Review } from './page/Review/Review.tsx'
 function App (): JSX.Element {
   return (
     <>
-      {/* <Link to='/' className='link-header' /> */}
       <Header />
 
       <Routes>
