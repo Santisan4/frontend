@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from '../../components/Icons'
-import './Product.css'
+import './ProductDetail.css'
 
-export function Product (): JSX.Element {
+export function ProductDetail (): JSX.Element {
   return (
     <div className='product-container'>
 

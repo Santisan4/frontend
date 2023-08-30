@@ -39,8 +39,7 @@ export function OrderSummary (): JSX.Element {
           </div>
         </div>
 
-        <Link to='/cart/checkout/review' className='button-submit-order'>Submit Order</Link>
-
+        <Link to='/cart/checkout/payment/review' className='button-submit-order'>Submit Order</Link>
       </div>
     </section>
   )

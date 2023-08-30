@@ -7,26 +7,35 @@ import { Register } from './page/User/Register.tsx'
 import { Cart } from './page/Cart/Cart.tsx'
 import { Checkout } from './page/Checkout/Checkout.tsx'
 import { Products } from './page/Products/Products.tsx'
-import { Product } from './page/Product/Product.tsx'
+import { ProductDetail } from './page/ProductDetail/ProductDetail.tsx'
 import { OrderSummary } from './page/OrderSumary/OrderSummary.tsx'
 import { Review } from './page/Review/Review.tsx'
+import { Dashboard } from './page/Dashboard/Dashboard.tsx'
+import { NewProduct } from './page/NewProduct/NewProduct.tsx'
+import { ProductsList } from './page/ProductList/ProductsList.tsx'
+import { EditProduct } from './page/EditProduct/EditProduct.tsx'
 
 function App (): JSX.Element {
   return (
     <>
       <Header />
-
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/products' element={<Products />} />
-        <Route path='/products/1' element={<Product />} />
+        <Route path='/products/1' element={<ProductDetail />} />
         <Route path='/user/login' element={<Login />} />
         <Route path='/user/register' element={<Register />} />
+        <Route path='/admin/dashboard' element={<Dashboard />} />
+        <Route path='/admin/dashboard/products' element={<ProductsList />} />
+        <Route path='/admin/dashboard/product' element={<NewProduct />} />
+        <Route path='/admin/dashboard/products/1/edit' element={<EditProduct />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/cart/checkout' element={<Checkout />} />
         <Route path='/cart/checkout/payment' element={<OrderSummary />} />
-        <Route path='/cart/checkout/review' element={<Review />} />
+        <Route path='/cart/checkout/payment/review' element={<Review />} />
+        <Route path='*' element={<h1>Not Found</h1>} />
       </Routes>
+
     </>
   )
 }
