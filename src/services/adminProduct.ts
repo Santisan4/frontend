@@ -3,7 +3,8 @@ import { type ApiResponseProducts } from '../types'
 
 type Token = string | null
 
-const baseUrl = 'http://localhost:3000/admin/'
+// const baseUrl = 'http://localhost:3000/admin/'
+const baseUrl = 'https://backend-hqcs-dev.fl0.io/admin'
 
 let token: Token = null
 

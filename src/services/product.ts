@@ -4,7 +4,8 @@ import {
   type ApiResponseProduct
 } from '../types'
 
-const baseUrl = 'http://localhost:3000/products'
+// const baseUrl = 'http://localhost:3000/products'
+const baseUrl = 'https://backend-hqcs-dev.fl0.io/products'
 
 const getProducts = async (): Promise<ApiResponseProducts> => {
   const request = axios.get(baseUrl)
