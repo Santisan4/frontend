@@ -34,11 +34,6 @@ export function Header (): JSX.Element {
       </label>
       <input type='checkbox' hidden id='close' checked={checked} onChange={handleChange} />
 
-      {/* <Link to='/' id='logo'>
-        <span>Bk'</span>
-        <span>Shop</span>
-      </Link> */}
-
       <nav className='nav'>
         <div className='logo-container'>
           <Logo />
