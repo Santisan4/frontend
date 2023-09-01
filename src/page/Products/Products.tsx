@@ -1,16 +1,51 @@
 import { Link } from 'react-router-dom'
-import { FavIcon, FilterIcon } from '../../components/Icons'
+import { FavIcon, FilterIcon } from '../../components/Icons.tsx'
 import './Products.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import productService from '../../services/product.ts'
+import { type ApiResponseProducts } from '../../types'
+
+interface ProductsWithLikes {
+  id: number
+  description: string
+  title: string
+  price: number
+  image: string
+  likes?: true | false
+}
 
 export function Products (): JSX.Element {
-  const [like, setLike] = useState(false)
+  const [products, setProducts] = useState<ProductsWithLikes[]>([])
 
-  const className = like ? 'fav-icon-container fav-icon-container--active' : ''
-
-  const handleLike = (): void => {
-    setLike(!like)
+  const handleLike = (id: number): void => {
+    const likeProducts = products.map((product: ProductsWithLikes) => {
+      if (product.id === id) {
+        if (product.likes === undefined) product.likes = false
+        return {
+          ...product,
+          likes: !product.likes
+        }
+      }
+      return product
+    })
+    setProducts(likeProducts)
   }
+
+  useEffect(() => {
+    productService.getProducts()
+      .then((products: ApiResponseProducts) => {
+        const productsWithLikes: ProductsWithLikes[] = products.map(product => {
+          return {
+            ...product,
+            likes: false
+          }
+        })
+        setProducts(productsWithLikes)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }, [])
 
   return (
     <section className='section-container'>
@@ -41,95 +76,21 @@ export function Products (): JSX.Element {
 
       <div className='products-container'>
 
-        <div className='card-container'>
-          <Link to='/products/1'> <img src='/bermuda.jpeg' alt='' /></Link>
-          <p className='news'>Lo nuevo</p>
-          <strong className='autor'>Bermudas The Golfer Shop</strong>
-          <p className='name'> Bermudas </p>
-          <strong>$6200.00</strong>
-          <span onClick={handleLike} className={className}><FavIcon /></span>
-        </div>
+        {
+          products.map((product: ProductsWithLikes) => {
+            return (
+              <div key={product.id} className='card-container'>
+                <Link to={`/products/${product.id}`}> <img src={product.image} alt='' /></Link>
+                <p className='news'>Lo nuevo</p>
+                <strong className='autor'>Bermudas The Golfer Shop</strong>
+                <p className='name'> {product.title} </p>
+                <strong>${product.price}</strong>
+                <span onClick={() => { handleLike(product.id) }} className={product.likes !== undefined ? 'fav-icon-container' : ''}><FavIcon /></span>
+              </div>
+            )
+          })
+        }
 
-        <div className='card-container'>
-          <Link to='/products/1'> <img src='/bermuda.webp' alt='' /></Link>
-          <p className='news'>Lo nuevo</p>
-          <strong className='autor'>Bermuda Nike Modern Fit</strong>
-          <p className='name'> Bermuda </p>
-          <strong>$43.650</strong>
-          <span onClick={handleLike} className={className}><FavIcon /></span>
-        </div>
-
-        <div className='card-container'>
-          <Link to='/products/1'> <img src='/golf.webp' alt='' /></Link>
-          <p className='news'>Lo nuevo</p>
-          <strong className='autor'>Titleist ap</strong>
-          <p className='name'> Hierros </p>
-          <strong>$10.00</strong>
-          <span onClick={handleLike} className={className}><FavIcon /></span>
-        </div>
-
-        <div className='card-container'>
-          <Link to='/products/1'> <img src='/golf2.webp' alt='' /></Link>
-          <p className='news'>Lo nuevo</p>
-          <strong className='autor'>Hierros Titleist p90</strong>
-          <p className='name'> Hierros </p>
-          <strong>$10.00</strong>
-          <span onClick={handleLike} className={className}><FavIcon /></span>
-        </div>
-
-        <div className='card-container'>
-          <Link to='/products/1'> <img src='/paraguas.webp' alt='' /></Link>
-          <p className='news'>Lo nuevo</p>
-          <strong className='autor'>Callaway 60 Single Canopy</strong>
-          <p className='name'> Paraguas </p>
-          <strong>$20000.00</strong>
-          <span onClick={handleLike} className={className}><FavIcon /></span>
-        </div>
-
-        <div className='card-container'>
-          <Link to='/products/1'> <img src='/porta-tarjetas.webp' alt='' /></Link>
-          <p className='news'>Lo nuevo</p>
-          <strong className='autor'>Porta tarjetas Golf River PLate</strong>
-          <p className='name'> Porta Tarjetas </p>
-          <strong>$14.900</strong>
-          <span onClick={handleLike} className={className}><FavIcon /></span>
-        </div>
-
-        <div className='card-container'>
-          <Link to='/products/1'> <img src='/remera2.webp' alt='' /></Link>
-          <p className='news'>Lo nuevo</p>
-          <strong className='autor'>Camiseta Nike</strong>
-          <p className='name'> Camiseta </p>
-          <strong>$23.000.00</strong>
-          <span onClick={handleLike} className={className}><FavIcon /></span>
-        </div>
-
-        <div className='card-container'>
-          <Link to='/products/1'> <img src='/remera3.webp' alt='' /></Link>
-          <p className='news'>Lo nuevo</p>
-          <strong className='autor'>Remera Nike Hombre</strong>
-          <p className='name'> Remera </p>
-          <strong>$10.00</strong>
-          <span onClick={handleLike} className={className}><FavIcon /></span>
-        </div>
-
-        <div className='card-container'>
-          <Link to='/products/1'> <img src='/remeradama.webp' alt='' /></Link>
-          <p className='news'>Lo nuevo</p>
-          <strong className='autor'>Remera Dama Nike</strong>
-          <p className='name'> Rayuela </p>
-          <strong>$15000.00</strong>
-          <span onClick={handleLike} className={className}><FavIcon /></span>
-        </div>
-
-        <div className='card-container'>
-          <Link to='/products/1'> <img src='/zapas1.webp' alt='' /></Link>
-          <p className='news'>Lo nuevo</p>
-          <strong className='autor'>Zapatilla Nike Dama </strong>
-          <p className='name'> Calzado </p>
-          <strong>$1000.00</strong>
-          <span onClick={handleLike} className={className}><FavIcon /></span>
-        </div>
       </div>
     </section>
   )

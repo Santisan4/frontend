@@ -1,12 +1,24 @@
-import { Link } from 'react-router-dom'
-import { Cart, CloseIcon, HomeIcon, IconProducts, Logo, MenuMobile, SettingIcon, User } from './Icons.tsx'
+import { Link, useNavigate } from 'react-router-dom'
+import { Cart, CloseIcon, DashboardIcon, HomeIcon, IconProducts, Logo, MenuMobile, SettingIcon, User } from './Icons.tsx'
 import { useState } from 'react'
+import { useUser } from '../hooks/useUser.tsx'
+import { UserActive } from './UserActive/UserActive.tsx'
+import productService from '../services/adminProduct.ts'
 
 export function Header (): JSX.Element {
+  const { user, setUser } = useUser()
   const [checked, setChecked] = useState(false)
+  const navigate = useNavigate()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setChecked(e.target.checked)
+  }
+
+  const handleLogout = (): void => {
+    setUser(null)
+    productService.setToken(user.token)
+    window.localStorage.removeItem('user')
+    navigate('/')
   }
 
   return (
@@ -27,29 +39,39 @@ export function Header (): JSX.Element {
         <span>Shop</span>
       </Link> */}
 
-      <div className='nav'>
+      <nav className='nav'>
         <div className='logo-container'>
           <Logo />
         </div>
         <div className='items-menu'>
           <Link to='/'> <HomeIcon /> Home </Link>
           <Link to='/products'> <IconProducts /> Products </Link>
-          <Link to='/user/login'> <User /> User</Link>
           <Link to='/cart'> <Cart /> Cart</Link>
-          <Link to='*'> <SettingIcon />  Setting </Link>
-
+          {
+            user === null
+              ? <Link to='/user/login'> <User /> User</Link>
+              : <Link to='*'> <SettingIcon />  My account </Link>
+          }
+          {
+            user !== null && user.admin > 0
+              ? <Link to='/admin/dashboard'> <DashboardIcon /> Dashboard </Link>
+              : null
+          }
         </div>
 
-        <div className='user-active-container'>
-          <div className='user'>
-            <img src='/rengo2.jpeg' alt='' />
-            <div>
-              <p>Santiago Sanchez</p>
-              <small>sant97@hotmail.com.ar</small>
-            </div>
-          </div>
-        </div>
-      </div>
+        {
+          user !== null
+            ? <div className='div-button'><button className='logout' onClick={handleLogout}>Logout</button></div>
+            : null
+        }
+
+        {
+          user !== null
+            ? <UserActive user={user} />
+            : ''
+        }
+
+      </nav>
 
     </header>
   )

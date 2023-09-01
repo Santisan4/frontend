@@ -38,17 +38,17 @@ export function Dashboard (): JSX.Element {
         </div>
       </div>
 
-      <Link to='/admin/dashboard/products' className='all-products'>
+      <Link to='/admin/products' className='all-products'>
         <ProductsIcon />
         <h3>Products</h3>
       </Link>
 
-      <Link to='/admin/dashboard/product' className='all-products'>
+      <Link to='/admin/product' className='all-products'>
         <Add />
         <h3>Product</h3>
       </Link>
 
-      <Link to='/admin/dashboard/users' className='all-products'>
+      <Link to='/admin/users' className='all-products'>
         <Users />
         <h3>Users</h3>
       </Link>

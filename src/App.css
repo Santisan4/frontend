@@ -128,3 +128,18 @@
   object-fit: cover;
 }
 
+.div-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout{
+  background-color: cornflowerblue;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+

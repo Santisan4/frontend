@@ -22,13 +22,13 @@ function App (): JSX.Element {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/products' element={<Products />} />
-        <Route path='/products/1' element={<ProductDetail />} />
+        <Route path='/products/:id' element={<ProductDetail />} />
         <Route path='/user/login' element={<Login />} />
         <Route path='/user/register' element={<Register />} />
         <Route path='/admin/dashboard' element={<Dashboard />} />
-        <Route path='/admin/dashboard/products' element={<ProductsList />} />
-        <Route path='/admin/dashboard/product' element={<NewProduct />} />
-        <Route path='/admin/dashboard/products/1/edit' element={<EditProduct />} />
+        <Route path='/admin/products' element={<ProductsList />} />
+        <Route path='/admin/product' element={<NewProduct />} />
+        <Route path='/admin/products/1/edit' element={<EditProduct />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/cart/checkout' element={<Checkout />} />
         <Route path='/cart/checkout/payment' element={<OrderSummary />} />
