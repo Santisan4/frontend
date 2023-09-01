@@ -16,7 +16,7 @@ export function Header (): JSX.Element {
 
   const handleLogout = (): void => {
     setUser(null)
-    productService.setToken(user.token)
+    productService.setToken(null)
     window.localStorage.removeItem('user')
     navigate('/')
   }

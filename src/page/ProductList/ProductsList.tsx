@@ -7,7 +7,7 @@ import { useUser } from '../../hooks/useUser'
 import { type Product } from '../../types'
 
 export function ProductsList (): JSX.Element {
-  const { user, setUser } = useUser()
+  const { setUser } = useUser()
   const [products, setProducts] = useState<Product[]>([])
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -36,6 +36,7 @@ export function ProductsList (): JSX.Element {
 
   return (
     <div className='product-list'>
+
       <div className='back'>
         <Link to='/admin/dashboard' className='arrow'><ArrowLeft /></Link>
         <h2>Productos Disponibles</h2>
@@ -51,6 +52,16 @@ export function ProductsList (): JSX.Element {
               <button><DeleteProduct /></button>
             </li>
           ))
+        }
+        {
+          loading
+            ? <p>Loading...</p>
+            : null
+        }
+        {
+          error !== null
+            ? <p>{error}</p>
+            : null
         }
       </ul>
     </div>
