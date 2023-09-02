@@ -3,8 +3,9 @@ export interface Product {
   title: string
   description: string
   price: number
+  stock: number
   image: string
-  id_category: number
+  category: string
 }
 
 export interface HookUseProducts {
@@ -27,3 +28,19 @@ export type Token = string
 
 export type ApiResponseProducts = Product[]
 export type ApiResponseProduct = Product
+
+export interface ProductForm {
+  title: string
+  description: string
+  price: number | string
+  image: string
+  stock: number | string
+  category: string
+}
+
+export interface UserData {
+  name: string
+  email: string
+  role: number
+  createdAt: string
+}

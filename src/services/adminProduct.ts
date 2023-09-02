@@ -1,10 +1,14 @@
 import axios from 'axios'
-import { type ApiResponseProducts } from '../types'
+import {
+  type Product,
+  type ApiResponseProducts,
+  type UserData
+} from '../types'
 
 type Token = string | null
 
-// const baseUrl = 'http://localhost:3000/admin/'
-const baseUrl = 'https://backend-hqcs-dev.fl0.io/admin'
+const baseUrl = 'http://localhost:3000/admin'
+// const baseUrl = 'https://backend-hqcs-dev.fl0.io/admin'
 
 let token: Token = null
 
@@ -17,7 +21,6 @@ const setToken = (newToken: Token): void => {
 const getProducts = async (): Promise<ApiResponseProducts> => {
   const config = {
     headers: {
-      // Authorization: `Bearer ${localStorage.getItem('token')}`
       Authorization: token
     }
   }
@@ -25,4 +28,66 @@ const getProducts = async (): Promise<ApiResponseProducts> => {
   return await request.then(response => response.data)
 }
 
-export default { getProducts, setToken }
+const createProduct = async (formData: FormData): Promise<Product> => {
+  const config = {
+    headers: {
+      Authorization: token
+    }
+  }
+
+  const { data } = await axios.post<Product>(`${baseUrl}/products`, formData, config)
+  return data
+}
+
+const getOneProduct = async (id: number): Promise<Product> => {
+  const config = {
+    headers: {
+      Authorization: token
+    }
+  }
+  const { data } = await axios.get(`${baseUrl}/products/${id}`, config)
+  return data
+}
+
+const updateProduct = async (id: number, formData: FormData): Promise<Product> => {
+  const config = {
+    headers: {
+      Authorization: token
+    }
+  }
+
+  const { data } = await axios.patch(`${baseUrl}/products/${id}`, formData, config)
+  return data
+}
+
+const deleteProduct = async (id: number): Promise<void> => {
+  const config = {
+    headers: {
+      Authorization: token
+    }
+  }
+
+  const { data } = await axios.delete(`${baseUrl}/products/${id}`, config)
+  return data
+}
+
+const getUsers = async (): Promise<UserData[]> => {
+  const config = {
+    headers: {
+      Authorization: token
+    }
+  }
+
+  const { data } = await axios.get(`${baseUrl}/users`, config)
+  return data
+}
+
+export default {
+  getProducts,
+  setToken,
+  createProduct,
+  getOneProduct,
+  updateProduct,
+  deleteProduct,
+  getUsers
+}

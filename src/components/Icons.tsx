@@ -195,7 +195,7 @@ export function Add (): JSX.Element {
 
 export function Edit (): JSX.Element {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-edit' width='24' height='24' viewBox='0 0 24 24' strokeWidth='2' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
+    <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-edit' width='20' height='20' viewBox='0 0 24 24' strokeWidth='2' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
       <path stroke='none' d='M0 0h24v24H0z' fill='none' />
       <path d='M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1' />
       <path d='M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z' />
@@ -206,7 +206,7 @@ export function Edit (): JSX.Element {
 
 export function DeleteProduct (): JSX.Element {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-file-x-filled' width='24' height='24' viewBox='0 0 24 24' strokeWidth='2' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
+    <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-file-x-filled' width='20' height='20' viewBox='0 0 24 24' strokeWidth='2' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
       <path stroke='none' d='M0 0h24v24H0z' fill='none' />
       <path d='M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005h5zm-1.489 9.14a1 1 0 0 0 -1.301 1.473l.083 .094l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.403 1.403l.094 -.083l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.403 -1.403l-.083 -.094l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.403 -1.403l-.094 .083l-1.293 1.292l-1.293 -1.292l-.094 -.083l-.102 -.07z' strokeWidth='0' fill='currentColor' />
       <path d='M19 7h-4l-.001 -4.001z' strokeWidth='0' fill='currentColor' />

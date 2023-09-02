@@ -1,9 +1,27 @@
-import { Add, ProductsIcon, Users } from '../../components/Icons'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+
+import { Add, ProductsIcon, Users } from '../../components/Icons'
+import { type UserData } from '../../types'
+import adminService from '../../services/adminProduct.ts'
 
 import './Dashboard.css'
 
 export function Dashboard (): JSX.Element {
+  const [users, setUsers] = useState<UserData[]>([])
+
+  useEffect(() => {
+    adminService.getUsers()
+      .then(users => {
+        setUsers(users)
+      })
+      .catch(err => {
+        throw new Error(err)
+      })
+  }, [])
+
+  const lastUser = users[users.length - 1]?.email
+
   return (
     <div className='dashboard-container'>
       <div className='user-container'>
@@ -29,12 +47,12 @@ export function Dashboard (): JSX.Element {
       <div className='users-total-container'>
         <div className='total'>
           <h3 className='title-total'>Total Users</h3>
-          <p className='value-total'> 200</p>
+          <p className='value-total'> {users.length} </p>
         </div>
 
         <div className='last-user'>
           <h3 className='title-last-user'>Last User</h3>
-          <p className='value-last-user'> ejemplo@email.com </p>
+          <p className='value-last-user'> {lastUser} </p>
         </div>
       </div>
 

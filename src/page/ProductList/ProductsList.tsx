@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, redirect } from 'react-router-dom'
 import { ArrowLeft, DeleteProduct, Edit } from '../../components/Icons.tsx'
 import './styles.css'
 import { useEffect, useState } from 'react'
@@ -16,6 +16,7 @@ export function ProductsList (): JSX.Element {
     setLoading(true)
     productService.getProducts()
       .then((products: Product[]) => {
+        console.log(products)
         setProducts(products)
         setLoading(false)
       })
@@ -34,6 +35,17 @@ export function ProductsList (): JSX.Element {
     }
   }, [])
 
+  const onDelete = (id: number): void => {
+    productService.deleteProduct(id)
+      .then(response => {
+        console.log(response)
+        redirect('/admin/products')
+      })
+      .catch(err => {
+        throw new Error(err.response.data.error)
+      })
+  }
+
   return (
     <div className='product-list'>
 
@@ -41,15 +53,24 @@ export function ProductsList (): JSX.Element {
         <Link to='/admin/dashboard' className='arrow'><ArrowLeft /></Link>
         <h2>Productos Disponibles</h2>
       </div>
+      <div className='titles'>
+        <p className='title'>id</p>
+        <p className='title'>title</p>
+        <p className='title'>price</p>
+        <p className='title'>stock</p>
+        <p className='title'>edit</p>
+        <p className='title'>delete</p>
+      </div>
       <ul className='list'>
         {
           products.map(product => (
             <li key={product.id} className='product-item'>
-              <p className='id'>{product.id}</p>
-              <h3 className='product-title'>{product.title}</h3>
-              <span className='product-price'>$ {product.price}</span>
-              <Link to={`/admin/dashboard/products/${product.id}/edit`} className='button'><Edit /></Link>
-              <button><DeleteProduct /></button>
+              <p className='product-id'>{product.id}</p>
+              <p className='product-title'>{product.title}</p>
+              <p className='product-price'>${product.price}</p>
+              <p className='product-stock'>{product.stock}</p>
+              <Link to={`/admin/products/${product.id}/edit`} className='button'><Edit /></Link>
+              <button onClick={() => { onDelete(product.id) }}><DeleteProduct /></button>
             </li>
           ))
         }
