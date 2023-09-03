@@ -52,3 +52,15 @@ export interface CartContextType {
   removeFromCart: (product: ProductData) => void
   decrementQuantity: (product: ProductData) => void
 }
+
+// export type Filters = 'All' | 'Pantalones' | 'Bermudas' | 'Gorros' | 'Remeras' | 'Zapatos' | 'Accesorios' | 'Palos' | 'Pelotas' | 'Guantes' | 'Bolsos' | 'Otros'
+
+export interface Filers {
+  category: string
+  minPrice: number
+}
+
+export interface FitlersContextType {
+  filters: Filters
+  setFilters: (filter: Filers) => void
+}
