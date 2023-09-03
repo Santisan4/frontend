@@ -4,18 +4,18 @@ import './styles.css'
 import { useEffect, useState } from 'react'
 import productService from '../../services/adminProduct.ts'
 import { useUser } from '../../hooks/useUser'
-import { type Product } from '../../types'
+import { type ProductData } from '../../types'
 
 export function ProductsList (): JSX.Element {
   const { setUser } = useUser()
-  const [products, setProducts] = useState<Product[]>([])
+  const [products, setProducts] = useState<ProductData[]>([])
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setLoading(true)
     productService.getProducts()
-      .then((products: Product[]) => {
+      .then((products: ProductData[]) => {
         console.log(products)
         setProducts(products)
         setLoading(false)

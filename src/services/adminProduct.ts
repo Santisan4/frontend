@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {
-  type Product,
+  type ProductData,
   type ApiResponseProducts,
   type UserData
 } from '../types'
@@ -28,18 +28,18 @@ const getProducts = async (): Promise<ApiResponseProducts> => {
   return await request.then(response => response.data)
 }
 
-const createProduct = async (formData: FormData): Promise<Product> => {
+const createProduct = async (formData: FormData): Promise<ProductData> => {
   const config = {
     headers: {
       Authorization: token
     }
   }
 
-  const { data } = await axios.post<Product>(`${baseUrl}/products`, formData, config)
+  const { data } = await axios.post<ProductData>(`${baseUrl}/products`, formData, config)
   return data
 }
 
-const getOneProduct = async (id: number): Promise<Product> => {
+const getOneProduct = async (id: number): Promise<ProductData> => {
   const config = {
     headers: {
       Authorization: token
@@ -49,7 +49,7 @@ const getOneProduct = async (id: number): Promise<Product> => {
   return data
 }
 
-const updateProduct = async (id: number, formData: FormData): Promise<Product> => {
+const updateProduct = async (id: number, formData: FormData): Promise<ProductData> => {
   const config = {
     headers: {
       Authorization: token

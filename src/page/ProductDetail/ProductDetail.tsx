@@ -3,19 +3,25 @@ import { ArrowLeft } from '../../components/Icons'
 import './ProductDetail.css'
 import { useEffect, useState } from 'react'
 import productService from '../../services/product.ts'
-import { type Product } from '../../types'
+import { type ProductData } from '../../types'
+import { useCart } from '../../hooks/useCart.tsx'
 
 export function ProductDetail (): JSX.Element {
-  const [product, setProduct] = useState<Product>()
-  // params
+  const [product, setProduct] = useState<ProductData>()
+  const { addToCart } = useCart()
+
   const { id } = useParams()
   const idProduct = Number(id)
 
   useEffect(() => {
     productService.productDetail(idProduct)
-      .then((product: Product) => { setProduct(product) })
+      .then((product: ProductData) => { setProduct(product) })
       .catch(error => { console.log(error) })
   }, [])
+
+  const handleAddToCart = (product: ProductData): void => {
+    addToCart(product)
+  }
 
   return (
     <div className='product-container'>
@@ -30,7 +36,7 @@ export function ProductDetail (): JSX.Element {
         <strong>${product?.price}</strong>
       </div>
 
-      <button>Add to cart</button>
+      <button onClick={() => { handleAddToCart(product as ProductData) }}>Add to cart</button>
 
       <p className='product-review'>
         {product?.description}

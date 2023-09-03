@@ -14,10 +14,11 @@ import { Dashboard } from './page/Dashboard/Dashboard.tsx'
 import { NewProduct } from './page/NewProduct/NewProduct.tsx'
 import { ProductsList } from './page/ProductList/ProductsList.tsx'
 import { EditProduct } from './page/EditProduct/EditProduct.tsx'
+import { CartProvider } from './context/cart.tsx'
 
 function App (): JSX.Element {
   return (
-    <>
+    <CartProvider>
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -36,7 +37,7 @@ function App (): JSX.Element {
         <Route path='*' element={<h1>Not Found</h1>} />
       </Routes>
 
-    </>
+    </CartProvider>
   )
 }
 

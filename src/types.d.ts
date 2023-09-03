@@ -1,4 +1,4 @@
-export interface Product {
+export interface ProductData {
   id: number
   title: string
   description: string
@@ -6,6 +6,7 @@ export interface Product {
   stock: number
   image: string
   category: string
+  quantity: number | undefined
 }
 
 export interface HookUseProducts {
@@ -43,4 +44,11 @@ export interface UserData {
   email: string
   role: number
   createdAt: string
+}
+
+export interface CartContextType {
+  cart: ProductData[]
+  addToCart: (product: ProductData) => void
+  removeFromCart: (product: ProductData) => void
+  decrementQuantity: (product: ProductData) => void
 }
