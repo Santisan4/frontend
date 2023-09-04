@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft } from '../../components/Icons'
-import productService from '../../services/adminProduct.ts'
+import adminService from '../../services/adminProduct.ts'
 
 import './styles.css'
 
@@ -47,7 +47,7 @@ export function NewProduct (): JSX.Element {
     formData.append('category', category)
     formData.append('image', image)
 
-    productService.createProduct(formData)
+    adminService.createProduct(formData)
       .then(product => {
         console.log(product)
         // redirect to home

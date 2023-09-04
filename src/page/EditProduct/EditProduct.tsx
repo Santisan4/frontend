@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { type ProductForm } from '../../types'
-import productService from '../../services/adminProduct.ts'
+import adminService from '../../services/adminProduct.ts'
 
 import './styles.css'
 
@@ -23,7 +23,7 @@ export function EditProduct (): JSX.Element {
   const idProduct = Number(id)
 
   useEffect(() => {
-    productService.getOneProduct(idProduct)
+    adminService.getOneProduct(idProduct)
       .then(product => {
         const productToEdit = {
           title: product.title,
@@ -79,7 +79,7 @@ export function EditProduct (): JSX.Element {
     formData.append('category', product.category)
     formData.append('image', image)
 
-    productService.updateProduct(idProduct, formData)
+    adminService.updateProduct(idProduct, formData)
       .then(response => {
         console.log(response)
         console.log(formData)

@@ -2,7 +2,7 @@ import { Link, redirect } from 'react-router-dom'
 import { ArrowLeft, DeleteProduct, Edit } from '../../components/Icons.tsx'
 import './styles.css'
 import { useEffect, useState } from 'react'
-import productService from '../../services/adminProduct.ts'
+import adminService from '../../services/adminProduct.ts'
 import { useUser } from '../../hooks/useUser'
 import { type ProductData } from '../../types'
 
@@ -14,7 +14,7 @@ export function ProductsList (): JSX.Element {
 
   useEffect(() => {
     setLoading(true)
-    productService.getProducts()
+    adminService.getProducts()
       .then((products: ProductData[]) => {
         console.log(products)
         setProducts(products)
@@ -31,12 +31,12 @@ export function ProductsList (): JSX.Element {
     if (userLogged !== null) {
       const user = JSON.parse(userLogged)
       setUser(user)
-      productService.setToken(user.token)
+      adminService.setToken(user.token)
     }
   }, [])
 
   const onDelete = (id: number): void => {
-    productService.deleteProduct(id)
+    adminService.deleteProduct(id)
       .then(response => {
         console.log(response)
         redirect('/admin/products')
