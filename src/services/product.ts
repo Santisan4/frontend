@@ -4,8 +4,8 @@ import {
   type ApiResponseProduct
 } from '../types'
 
-const baseUrl = 'http://localhost:3000/products'
-// const baseUrl = 'https://backend-hqcs-dev.fl0.io/products' // remote server
+// const baseUrl = 'http://localhost:3000/products'
+const baseUrl = 'https://backend-hqcs-dev.fl0.io/products' // remote server
 
 const getProducts = async (): Promise<ApiResponseProducts> => {
   const { data } = await axios.get(baseUrl)
