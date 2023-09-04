@@ -16,7 +16,6 @@ export function ProductsList (): JSX.Element {
     setLoading(true)
     adminService.getProducts()
       .then((products: ProductData[]) => {
-        console.log(products)
         setProducts(products)
         setLoading(false)
       })
@@ -69,7 +68,7 @@ export function ProductsList (): JSX.Element {
               <p className='product-title'>{product.title}</p>
               <p className='product-price'>${product.price}</p>
               <p className='product-stock'>{product.stock}</p>
-              <Link to={`/admin/products/${product.id}/edit`} className='button'><Edit /></Link>
+              <Link to={`/admin/products/${product?.id}/edit`} className='button'><Edit /></Link>
               <button onClick={() => { onDelete(product.id) }}><DeleteProduct /></button>
             </li>
           ))

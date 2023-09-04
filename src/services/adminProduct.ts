@@ -3,7 +3,8 @@ import {
   type ProductData,
   type ApiResponseProducts,
   type UserData,
-  type ProductForm
+  type ProductForm,
+  type FormCreateProductType
 } from '../types'
 
 type Token = string | null
@@ -29,7 +30,7 @@ const getProducts = async (): Promise<ApiResponseProducts> => {
   return await request.then(response => response.data)
 }
 
-const createProduct = async (formData: ProductForm): Promise<ProductData> => {
+const createProduct = async (formData: FormCreateProductType): Promise<ProductData> => {
   const config = {
     headers: {
       Authorization: token
@@ -50,7 +51,7 @@ const getOneProduct = async (id: number): Promise<ProductData> => {
   return data
 }
 
-const updateProduct = async (id: number, formData: FormData): Promise<ProductData> => {
+const updateProduct = async (id: number, formData: ProductForm): Promise<ProductData> => {
   const config = {
     headers: {
       Authorization: token

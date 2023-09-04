@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { type ProductForm } from '../../types'
+import { type ProductData, type EditForm } from '../../types'
 import adminService from '../../services/adminProduct.ts'
 
 import './styles.css'
 
 export function EditProduct (): JSX.Element {
-  const [product, setProduct] = useState<ProductForm>({
+  const [product, setProduct] = useState<EditForm>({
     title: '',
     description: '',
-    price: '',
+    price: 0,
     stock: 0,
     category: '',
     image: ''
@@ -25,7 +25,8 @@ export function EditProduct (): JSX.Element {
   useEffect(() => {
     adminService.getOneProduct(idProduct)
       .then(product => {
-        const productToEdit = {
+        const productToEdit: ProductData = {
+          id: product.id,
           title: product.title,
           description: product.description,
           price: product.price,
@@ -70,14 +71,23 @@ export function EditProduct (): JSX.Element {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
 
-    const formData = new FormData()
+    // const formData = new FormData()
 
-    formData.append('title', product.title)
-    formData.append('description', product.description)
-    formData.append('price', String(product.price))
-    formData.append('stock', String(product.stock))
-    formData.append('category', product.category)
-    formData.append('image', image)
+    // formData.append('title', product.title)
+    // formData.append('description', product.description)
+    // formData.append('price', String(product.price))
+    // formData.append('stock', String(product.stock))
+    // formData.append('category', product.category)
+    // formData.append('image', image)
+
+    const formData = {
+      title: product.title,
+      description: product.description,
+      price: product.price,
+      stock: product.stock,
+      category: product.category,
+      image
+    }
 
     adminService.updateProduct(idProduct, formData)
       .then(response => {

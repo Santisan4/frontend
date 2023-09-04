@@ -11,9 +11,9 @@ import './styles.css'
 export function NewProduct (): JSX.Element {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [price, setPrice] = useState<number | string>('')
+  const [price, setPrice] = useState<string>('')
   const [category, setCategory] = useState('')
-  const [image, setImage] = useState<File>('' as unknown as File)
+  const [image, setImage] = useState<File | null>(null)
 
   const navigate = useNavigate()
 
@@ -26,7 +26,7 @@ export function NewProduct (): JSX.Element {
   }
 
   const handleChangePreice = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setPrice(Number(event.target.value))
+    setPrice(event.target.value)
   }
 
   const handleChangeCategory = (event: React.ChangeEvent<HTMLInputElement>): void => {

@@ -6,7 +6,7 @@ export interface ProductData {
   stock: number
   image: string
   category: string
-  quantity: number | undefined
+  quantity?: number
 }
 
 export interface HookUseProducts {
@@ -30,12 +30,30 @@ export type Token = string
 export type ApiResponseProducts = Product[]
 export type ApiResponseProduct = Product
 
+export interface FormCreateProductType {
+  title: string
+  description: string
+  price: string
+  category: string
+  image: File | null
+}
+
 export interface ProductForm {
   title: string
   description: string
   price: string | number
+  stock: number | null
   category: string
-  image: File
+  image: File | null
+}
+
+export interface EditForm {
+  title: string
+  description: string
+  price: number
+  stock: number
+  category: string
+  image: string
 }
 
 export interface UserData {
