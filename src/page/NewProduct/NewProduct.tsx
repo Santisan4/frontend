@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState } from 'react'
 
 import { Link, useNavigate } from 'react-router-dom'
@@ -38,7 +39,7 @@ export function NewProduct (): JSX.Element {
     setImage(selectedFile)
   }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault()
     const formData = new FormData()
     formData.append('title', title)
@@ -47,37 +48,36 @@ export function NewProduct (): JSX.Element {
     formData.append('category', category)
     formData.append('image', image)
 
-    adminService.createProduct(formData)
-      .then(product => {
-        console.log(product)
-        // redirect to home
-        navigate('/admin/dashboard')
-        // clear form
-        setTitle('')
-        setDescription('')
-        setPrice('')
-        setCategory('')
-        setImage('' as unknown as File)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    // adminService.createProduct(formData)
+    //   .then(product => {
+    //     console.log(product)
+    //     // redirect to home
+    //     navigate('/admin/dashboard')
+    //     // clear form
+    //     setTitle('')
+    //     setDescription('')
+    //     setPrice('')
+    //     setCategory('')
+    //     setImage('' as unknown as File)
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
 
-    // try {
-    //   const response = await productService.createProduct(formData)
+    try {
+      const response = await adminService.createProduct(formData)
 
-    //   console.log(response)
-    //   // redirect to home
-    //   navigate('/admin/dashboard')
-    //   // clear form
-    //   setTitle('')
-    //   setDescription('')
-    //   setPrice('')
-    //   setCategory('')
-    //   setImage('')
-    // } catch (err) {
-    //   console.log(err)
-    // }
+      console.log(response)
+      // redirect to home
+      navigate('/admin/dashboard')
+      // clear form
+      setTitle('')
+      setDescription('')
+      setPrice('')
+      setCategory('')
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (

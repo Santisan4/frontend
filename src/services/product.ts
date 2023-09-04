@@ -5,7 +5,7 @@ import {
 } from '../types'
 
 // const baseUrl = 'http://localhost:3000/products'
-const baseUrl = 'https://tiendaeos-dev.fl0.io/products' // remote server
+const baseUrl = 'https://tiendaeos-dev.fl0.io/products'
 
 const getProducts = async (): Promise<ApiResponseProducts> => {
   const { data } = await axios.get(baseUrl)
