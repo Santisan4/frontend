@@ -1,28 +1,24 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Cart, CloseIcon, DashboardIcon, HomeIcon, IconProducts, Logo, MenuMobile, SettingIcon, User } from './Icons.tsx'
 import { useState } from 'react'
-import { useUser } from '../hooks/useUser.tsx'
+
 import { UserActive } from './UserActive/UserActive.tsx'
-import productService from '../services/adminProduct.ts'
+import { useUser } from '../hooks/useUser.tsx'
 
 export function Header (): JSX.Element {
-  const { user, setUser } = useUser()
+  const { user } = useUser()
   const [checked, setChecked] = useState(false)
-  const navigate = useNavigate()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setChecked(e.target.checked)
   }
 
-  const handleLogout = (): void => {
-    setUser(null)
-    productService.setToken(null)
-    window.localStorage.removeItem('user')
-    navigate('/')
-  }
+  const pathWithoutHeader = ['/settings', '/admin/dashboard', '/admin/products']
+
+  const className = pathWithoutHeader.includes(window.location.pathname) ? 'no-header' : 'header'
 
   return (
-    <header className='header'>
+    <header className={className}>
 
       <label htmlFor='menu' className='menu-button'>
         <MenuMobile />
@@ -45,7 +41,7 @@ export function Header (): JSX.Element {
           {
             user === null
               ? <Link to='/user/login'> <User /> User</Link>
-              : <Link to='*'> <SettingIcon />  My account </Link>
+              : <Link to='/settings'> <SettingIcon />  My account </Link>
           }
           {
             user !== null && user.admin > 0
@@ -53,12 +49,6 @@ export function Header (): JSX.Element {
               : null
           }
         </div>
-
-        {
-          user !== null
-            ? <div className='div-button'><button className='logout' onClick={handleLogout}>Logout</button></div>
-            : null
-        }
 
         {
           user !== null

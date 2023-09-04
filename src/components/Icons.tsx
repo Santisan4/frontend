@@ -251,3 +251,62 @@ export function DashboardIcon (): JSX.Element {
     </svg>
   )
 }
+
+export function LogoutIcon (): JSX.Element {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-logout' width='24' height='24' viewBox='0 0 24 24' strokeWidth='2' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2' />
+      <path d='M9 12h12l-3 -3' />
+      <path d='M18 15l3 -3' />
+    </svg>
+  )
+}
+
+export function FAQIcon (): JSX.Element {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-help-octagon' width='24' height='24' viewBox='0 0 24 24' strokeWidth='2' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M9.103 2h5.794a3 3 0 0 1 2.122 .879l4.101 4.1a3 3 0 0 1 .88 2.125v5.794a3 3 0 0 1 -.879 2.122l-4.1 4.101a3 3 0 0 1 -2.123 .88h-5.795a3 3 0 0 1 -2.122 -.88l-4.101 -4.1a3 3 0 0 1 -.88 -2.124v-5.794a3 3 0 0 1 .879 -2.122l4.1 -4.101a3 3 0 0 1 2.125 -.88z' />
+      <path d='M12 16v.01' />
+      <path d='M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483' />
+    </svg>
+  )
+}
+
+export function LegalIcon (): JSX.Element {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-file-description' width='24' height='24' viewBox='0 0 24 24' strokeWidth='2' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M14 3v4a1 1 0 0 0 1 1h4' />
+      <path d='M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z' />
+      <path d='M9 17h6' />
+      <path d='M9 13h6' />
+    </svg>
+  )
+}
+
+export function MyAccountIcon (): JSX.Element {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-user-circle' width='24' height='24' viewBox='0 0 24 24' strokeWidth='2' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0' />
+      <path d='M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0' />
+      <path d='M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855' />
+    </svg>
+  )
+}
+
+export function OrdersIcon (): JSX.Element {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-list' width='24' height='24' viewBox='0 0 24 24' strokeWidth='2' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M9 6l11 0' />
+      <path d='M9 12l11 0' />
+      <path d='M9 18l11 0' />
+      <path d='M5 6l0 .01' />
+      <path d='M5 12l0 .01' />
+      <path d='M5 18l0 .01' />
+    </svg>
+  )
+}

@@ -55,7 +55,8 @@ const getOneProduct = async (id: number): Promise<ProductData> => {
 const updateProduct = async (id: number, formData: ProductForm): Promise<ProductData> => {
   const config = {
     headers: {
-      Authorization: token
+      Authorization: token,
+      'Content-Type': 'multipart/form-data'
     }
   }
 

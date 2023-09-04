@@ -13,6 +13,10 @@
   padding: 10px;
 }
 
+.no-header{
+  display: none;
+}
+
 #logo {
   display: flex;
   justify-content: center;

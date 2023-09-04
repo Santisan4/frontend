@@ -1,11 +1,17 @@
 import { createContext, useState } from 'react'
-import { type FitlersContextType } from '../types'
+import { type FiltersContextType } from '../types'
 
 interface Props {
   children: React.ReactNode
 }
 
-export const FiltersContext = createContext<FitlersContextType | undefined>(undefined)
+export const FiltersContext = createContext<FiltersContextType>({
+  filters: {
+    category: 'All',
+    minPrice: 0
+  },
+  setFilters: () => {}
+})
 
 export function FiltersProvider ({ children }: Props): JSX.Element {
   const [filters, setFilters] = useState({

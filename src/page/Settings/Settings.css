@@ -1,0 +1,59 @@
+.settings-container{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+}
+
+.icon-back-settings{
+  text-align: start;
+  text-decoration: none;
+  color: black;
+}
+
+.title-settings{
+  padding: 10px;
+  margin: 0;
+}
+
+.title-section{
+  font-size: 14px;
+  padding: 10px;
+  color: #8E8E8E;
+}
+
+.container-option{
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.div-option{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.p-option-arrow{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  color: cornflowerblue;
+  cursor: pointer;
+}
+
+.logout-container{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.p-logout{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

@@ -72,12 +72,18 @@ export interface CartContextType {
 
 // export type Filters = 'All' | 'Pantalones' | 'Bermudas' | 'Gorros' | 'Remeras' | 'Zapatos' | 'Accesorios' | 'Palos' | 'Pelotas' | 'Guantes' | 'Bolsos' | 'Otros'
 
-export interface Filers {
+export interface FiltersType {
   category: string
   minPrice: number
 }
 
-export interface FitlersContextType {
+export interface FiltersContextType {
   filters: Filters
   setFilters: (filter: Filers) => void
+}
+
+export interface UseFiltersHook {
+  filters: Filters
+  setFilters: (filter: Filers) => void
+  filterProducts: (products: ProductData[]) => ProductData[]
 }

@@ -29,7 +29,7 @@ export function NewProduct (): JSX.Element {
     setPrice(event.target.value)
   }
 
-  const handleChangeCategory = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChangeCategory = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     setCategory(event.target.value)
   }
 
@@ -111,7 +111,18 @@ export function NewProduct (): JSX.Element {
         </label>
         <label>
           Categoría:
-          <input type='text' value={category} onChange={handleChangeCategory} required />
+          <select onChange={handleChangeCategory}>
+            <option value='All'> Filtros  </option>
+            <option value='Zapatos'> Zapatos </option>
+            <option value='Remeras'> Remeras </option>
+            <option value='Bermudas'> Bermudas </option>
+            <option value='Pantalones'> Pantalones </option>
+            <option value='Bolsas'> Bolsas </option>
+            <option value='Carros'> Carros </option>
+            <option value='Hierros'> Hierros </option>
+            <option value='Gorras'> Gorras </option>
+            <option value='Accesorios'> Accesorios </option>
+          </select>
         </label>
         <label>
           Imagen:
