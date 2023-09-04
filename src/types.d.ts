@@ -33,10 +33,9 @@ export type ApiResponseProduct = Product
 export interface ProductForm {
   title: string
   description: string
-  price: number | string
-  image: string
-  stock: number | string
+  price: string | number
   category: string
+  image: File
 }
 
 export interface UserData {

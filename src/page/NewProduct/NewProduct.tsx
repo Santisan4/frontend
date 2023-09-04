@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState } from 'react'
 
@@ -41,14 +42,21 @@ export function NewProduct (): JSX.Element {
     }
   }
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const formData = new FormData()
-    formData.append('title', title)
-    formData.append('description', description)
-    formData.append('price', String(price))
-    formData.append('category', category)
-    formData.append('image', image)
+    // const formData = new FormData()
+    // formData.append('title', title)
+    // formData.append('description', description)
+    // formData.append('price', String(price))
+    // formData.append('category', category)
+    // formData.append('image', image)
+    const formData = {
+      title,
+      description,
+      price,
+      category,
+      image
+    }
 
     adminService.createProduct(formData)
       .then(product => {
