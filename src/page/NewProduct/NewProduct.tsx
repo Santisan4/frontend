@@ -33,10 +33,12 @@ export function NewProduct (): JSX.Element {
   }
 
   const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (e.target.files === null) { console.log('No hay archivo'); return }
-
-    const selectedFile = e.target.files[0]
-    setImage(selectedFile)
+    if (e.target.files === null) {
+      console.log('No hay archivo')
+    } else {
+      const selectedFile = e.target.files[0]
+      setImage(selectedFile)
+    }
   }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -48,36 +50,36 @@ export function NewProduct (): JSX.Element {
     formData.append('category', category)
     formData.append('image', image)
 
-    // adminService.createProduct(formData)
-    //   .then(product => {
-    //     console.log(product)
-    //     // redirect to home
-    //     navigate('/admin/dashboard')
-    //     // clear form
-    //     setTitle('')
-    //     setDescription('')
-    //     setPrice('')
-    //     setCategory('')
-    //     setImage('' as unknown as File)
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
+    adminService.createProduct(formData)
+      .then(product => {
+        console.log(product)
+        // redirect to home
+        navigate('/admin/dashboard')
+        // clear form
+        setTitle('')
+        setDescription('')
+        setPrice('')
+        setCategory('')
+        setImage('' as unknown as File)
+      })
+      .catch(err => {
+        console.log(err)
+      })
 
-    try {
-      const response = await adminService.createProduct(formData)
+    // try {
+    //   const response = await adminService.createProduct(formData)
 
-      console.log(response)
-      // redirect to home
-      navigate('/admin/dashboard')
-      // clear form
-      setTitle('')
-      setDescription('')
-      setPrice('')
-      setCategory('')
-    } catch (err) {
-      console.log(err)
-    }
+    //   console.log(response)
+    //   // redirect to home
+    //   navigate('/admin/dashboard')
+    //   // clear form
+    //   setTitle('')
+    //   setDescription('')
+    //   setPrice('')
+    //   setCategory('')
+    // } catch (error) {
+    //   console.log(error)
+    // }
   }
 
   return (
@@ -89,23 +91,23 @@ export function NewProduct (): JSX.Element {
       <form className='form' onSubmit={handleSubmit} encType='multipart/form-data'>
         <label>
           Título:
-          <input type='text' value={title} onChange={handleChangeTitle} />
+          <input type='text' value={title} onChange={handleChangeTitle} required />
         </label>
         <label>
           Descripción:
-          <textarea value={description} onChange={handleChangeDescription} />
+          <textarea value={description} onChange={handleChangeDescription} required />
         </label>
         <label>
           Precio:
-          <input type='number' value={price} onChange={handleChangePreice} />
+          <input type='number' value={price} onChange={handleChangePreice} required />
         </label>
         <label>
           Categoría:
-          <input type='text' value={category} onChange={handleChangeCategory} />
+          <input type='text' value={category} onChange={handleChangeCategory} required />
         </label>
         <label>
           Imagen:
-          <input type='file' accept='image/*' onChange={handleChangeImage} />
+          <input type='file' accept='image/*' onChange={handleChangeImage} required />
         </label>
         <button type='submit'>Crear Producto</button>
       </form>
