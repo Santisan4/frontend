@@ -33,7 +33,8 @@ const getProducts = async (): Promise<ApiResponseProducts> => {
 const createProduct = async (formData: FormCreateProductType): Promise<ProductData> => {
   const config = {
     headers: {
-      Authorization: token
+      Authorization: token,
+      'Content-Type': 'multipart/form-data'
     }
   }
 
