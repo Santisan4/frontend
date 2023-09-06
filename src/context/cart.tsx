@@ -1,12 +1,13 @@
 import { createContext, useState } from 'react'
 import { type CartContextType, type ProductData } from '../types'
+import { CART_INITIAL_STATE } from '../const'
 
 type Children = React.ReactNode
 
 export const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export function CartProvider ({ children }: { children: Children }): JSX.Element {
-  const [cart, setCart] = useState<ProductData[]>([])
+  const [cart, setCart] = useState<ProductData[]>(CART_INITIAL_STATE)
 
   const addToCart = (product: ProductData): void => {
     // check if product is already in cart
@@ -23,6 +24,7 @@ export function CartProvider ({ children }: { children: Children }): JSX.Element
         return item
       })
       setCart(newCart)
+      window.localStorage.setItem('cart', JSON.stringify(newCart))
       return
     }
 
@@ -31,11 +33,13 @@ export function CartProvider ({ children }: { children: Children }): JSX.Element
       quantity: 1
     }]
     setCart(newCart)
+    window.localStorage.setItem('cart', JSON.stringify(newCart))
   }
 
   const removeFromCart = (product: ProductData): void => {
     const newCart = cart.filter(item => item.id !== product.id)
     setCart(newCart)
+    window.localStorage.setItem('cart', JSON.stringify(newCart))
   }
 
   const decrementQuantity = (product: ProductData): void => {
@@ -49,8 +53,8 @@ export function CartProvider ({ children }: { children: Children }): JSX.Element
       }
       return item
     })
-
     setCart(newCart)
+    window.localStorage.setItem('cart', JSON.stringify(newCart))
   }
 
   return (

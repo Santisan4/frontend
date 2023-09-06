@@ -1,7 +1,16 @@
-import { Link } from 'react-router-dom'
 import './styles.css'
+import { useCart } from '../../hooks/useCart'
 
 export function OrderSummary (): JSX.Element {
+  const { cart } = useCart()
+
+  const totalPrice = cart.reduce((acc, item) => item.price * (item.quantity ?? 0) + acc, 0)
+  const totalItems = cart.map(item => item.quantity ?? 0).reduce((acc, quantity) => quantity + acc, 0)
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault()
+  }
+
   return (
     <section className='summary-container'>
 
@@ -19,8 +28,9 @@ export function OrderSummary (): JSX.Element {
           </div>
 
           <div className='card-date'>
-            <p className='card'> <img className='logo-mc' src='/mc.png' alt='' /> **** 6789</p>
-            <p> 01/24 </p>
+            <img className='logo-mc' src='/mp.png' alt='' />
+            {/* <p className='card'> <img className='logo-mc' src='/mp.png' alt='' /> **** 6789</p>
+            <p> 01/24 </p> */}
           </div>
 
         </div>
@@ -30,16 +40,19 @@ export function OrderSummary (): JSX.Element {
         <div className='order-summary'>
           <h3>Order summary</h3>
           <div>
-            <p>Subtotal</p>
-            <p>$ 100.00</p>
+            <p>Items</p>
+            <p>{totalItems}</p>
           </div>
           <div>
             <p>Total</p>
-            <p>$ 100.00</p>
+            <p>$ {totalPrice}</p>
           </div>
         </div>
 
-        <Link to='/cart/checkout/payment/review' className='button-submit-order'>Submit Order</Link>
+        <form onSubmit={handleSubmit} className='button-submit-order'>
+          <button> Pay</button>
+        </form>
+        {/* <Link to='/cart/checkout/payment/review' className='button-submit-order'>Pay</Link> */}
       </div>
     </section>
   )

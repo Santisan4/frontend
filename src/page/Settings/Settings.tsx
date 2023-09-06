@@ -14,6 +14,7 @@ export function Settings (): JSX.Element {
     setUser(null)
     adminService.setToken(null)
     window.localStorage.removeItem('user')
+    window.localStorage.removeItem('cart')
     navigate('/')
   }
   return (

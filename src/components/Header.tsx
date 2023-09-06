@@ -1,13 +1,22 @@
 import { Link } from 'react-router-dom'
 import { Cart, CloseIcon, DashboardIcon, HomeIcon, IconProducts, Logo, MenuMobile, SettingIcon, User } from './Icons.tsx'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { UserActive } from './UserActive/UserActive.tsx'
 import { useUser } from '../hooks/useUser.tsx'
 
 export function Header (): JSX.Element {
-  const { user } = useUser()
+  const { user, setUser } = useUser()
   const [checked, setChecked] = useState(false)
+
+  useEffect(() => {
+    const userInLocalStorage = window.localStorage.getItem('user')
+    if (userInLocalStorage !== null) {
+      setUser(JSON.parse(userInLocalStorage))
+    } else {
+      setUser(null)
+    }
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setChecked(e.target.checked)
