@@ -1,14 +1,32 @@
-import './styles.css'
 import { useCart } from '../../hooks/useCart'
+
+import userService from '../../services/user.ts'
+import { useUser } from '../../hooks/useUser.tsx'
+
+import './styles.css'
 
 export function OrderSummary (): JSX.Element {
   const { cart } = useCart()
+  const { user } = useUser()
+
+  const userToken = user !== null ? user.token : null
 
   const totalPrice = cart.reduce((acc, item) => item.price * (item.quantity ?? 0) + acc, 0)
   const totalItems = cart.map(item => item.quantity ?? 0).reduce((acc, quantity) => quantity + acc, 0)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
+
+    userService.setToken(userToken)
+    userService.payment(cart)
+      .then(response => {
+        console.log(response)
+        const urlMercadoPago = response.init_point
+        window.location.href = urlMercadoPago
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   return (
@@ -50,7 +68,7 @@ export function OrderSummary (): JSX.Element {
         </div>
 
         <form onSubmit={handleSubmit} className='button-submit-order'>
-          <button> Pay</button>
+          <button> Pay </button>
         </form>
         {/* <Link to='/cart/checkout/payment/review' className='button-submit-order'>Pay</Link> */}
       </div>

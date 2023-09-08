@@ -1,23 +1,24 @@
 import axios from 'axios'
+
 import {
   type ProductData,
   type ApiResponseProducts,
   type UserData,
   type ProductForm,
-  type FormCreateProductType
+  type FormCreateProductType,
+  type OrderType
 } from '../types'
+
+// const baseUrl = 'http://localhost:3000/admin'
+const baseUrl = 'https://tiendaeos-dev.fl0.io/admin'
 
 type Token = string | null
 
-const baseUrl = 'http://localhost:3000/admin'
-// const baseUrl = 'https://tiendaeos-dev.fl0.io/admin'
-
 let token: Token = null
 
-const setToken = (newToken: Token): void => {
-  if (newToken !== null) {
-    token = `Bearer ${newToken}`
-  }
+const setToken = (newToken: Token): Token => {
+  token = newToken !== null ? `Bearer ${newToken}` : null
+  return token
 }
 
 const getProducts = async (): Promise<ApiResponseProducts> => {
@@ -26,6 +27,7 @@ const getProducts = async (): Promise<ApiResponseProducts> => {
       Authorization: token
     }
   }
+
   const request = axios.get(`${baseUrl}/products`, config)
   return await request.then(response => response.data)
 }
@@ -33,8 +35,7 @@ const getProducts = async (): Promise<ApiResponseProducts> => {
 const createProduct = async (formData: FormCreateProductType): Promise<ProductData> => {
   const config = {
     headers: {
-      Authorization: token,
-      'Content-Type': 'multipart/form-data'
+      Authorization: token
     }
   }
 
@@ -48,6 +49,7 @@ const getOneProduct = async (id: number): Promise<ProductData> => {
       Authorization: token
     }
   }
+
   const { data } = await axios.get(`${baseUrl}/products/${id}`, config)
   return data
 }
@@ -55,8 +57,7 @@ const getOneProduct = async (id: number): Promise<ProductData> => {
 const updateProduct = async (id: number, formData: ProductForm): Promise<ProductData> => {
   const config = {
     headers: {
-      Authorization: token,
-      'Content-Type': 'multipart/form-data'
+      Authorization: token
     }
   }
 
@@ -86,12 +87,24 @@ const getUsers = async (): Promise<UserData[]> => {
   return data
 }
 
+const getOrders = async (): Promise<OrderType[]> => {
+  const config = {
+    headers: {
+      Authorization: token
+    }
+  }
+
+  const { data } = await axios.get(`${baseUrl}/orders`, config)
+  return data
+}
+
 export default {
   getProducts,
-  setToken,
   createProduct,
   getOneProduct,
   updateProduct,
   deleteProduct,
-  getUsers
+  getUsers,
+  setToken,
+  getOrders
 }

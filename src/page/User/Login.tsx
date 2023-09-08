@@ -1,9 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
-import './styles.css'
 import { useState } from 'react'
+
 import userService from '../../services/user.ts'
-import productService from '../../services/adminProduct.ts'
+import adminService from '../../services/adminProduct.ts'
 import { useUser } from '../../hooks/useUser.tsx'
+
+import './styles.css'
 
 export function Login (): JSX.Element {
   const [email, setEmail] = useState('')
@@ -25,7 +27,8 @@ export function Login (): JSX.Element {
     userService.login({ email, password })
       .then(user => {
         setUser(user)
-        productService.setToken(user.token)
+        userService.setToken(user.token)
+        adminService.setToken(user.token)
         // redirect to home
         navigate('/')
         // save in local storage
