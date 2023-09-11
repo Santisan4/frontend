@@ -1,12 +1,25 @@
 .edit-product-form {
   width: 100%;
   padding: 20px;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.edit-product-form h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+.title-edit-product-container{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.arrow-back{
+  text-decoration: none;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.title-edit-product{
+  margin: 0;
 }
 
 .edit-product-form label {

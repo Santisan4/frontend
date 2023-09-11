@@ -1,24 +1,8 @@
-import { useEffect } from 'react'
-
 import { Slider } from '../../components/Slider/Slider'
-import { useUser } from '../../hooks/useUser'
-import userService from '../../services/user.ts'
 
 import './Home.css'
 
 export function Home (): JSX.Element {
-  const { setUser } = useUser()
-
-  useEffect(() => {
-    const userLoggedJSON = window.localStorage.getItem('user')
-
-    if (userLoggedJSON !== null) {
-      const userLogged = JSON.parse(userLoggedJSON)
-      setUser(userLogged)
-      userService.setToken(userLogged.token)
-    }
-  }, [])
-
   return (
     <>
       <Slider />

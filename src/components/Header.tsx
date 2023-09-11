@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+
+import { UserActive } from './UserActive/UserActive.tsx'
+import { useUser } from '../hooks/useUser.tsx'
 
 import {
   Cart,
@@ -12,29 +15,16 @@ import {
   SettingIcon,
   User
 } from './Icons.tsx'
-import { UserActive } from './UserActive/UserActive.tsx'
-import { useUser } from '../hooks/useUser.tsx'
 
 export function Header (): JSX.Element {
-  const { user, setUser } = useUser()
+  const { user } = useUser()
   const [checked, setChecked] = useState(false)
-
-  useEffect(() => {
-    const userInLocalStorage = window.localStorage.getItem('user')
-    if (userInLocalStorage !== null) {
-      setUser(JSON.parse(userInLocalStorage))
-    } else {
-      setUser(null)
-    }
-  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setChecked(e.target.checked)
   }
 
-  const pathWithoutHeader = ['/settings', '/admin/dashboard', '/admin/products']
-
-  const className = pathWithoutHeader.includes(window.location.pathname) ? 'no-header' : 'header'
+  const className = window.location.pathname.startsWith('admin') ? 'no-header' : 'header'
 
   return (
     <header className={className}>
@@ -55,8 +45,8 @@ export function Header (): JSX.Element {
         </div>
         <div className='items-menu'>
           <Link to='/'> <HomeIcon /> Home </Link>
-          <Link to='/products'> <IconProducts /> Productos </Link>
-          <Link to='/cart'> <Cart /> Carrito </Link>
+          <Link to='products'> <IconProducts /> Productos </Link>
+          <Link to='cart'> <Cart /> Carrito </Link>
           {
             user === null
               ? <Link to='/user/login'> <User /> Usuarios </Link>

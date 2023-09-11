@@ -1,10 +1,13 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { ArrowLeft, DeleteIcon } from '../../components/Icons'
-import './Cart.css'
-import { useCart } from '../../hooks/useCart'
-import { type ProductData } from '../../types'
-import { useUser } from '../../hooks/useUser'
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { type ProductData } from '../../types'
+import { useCart } from '../../hooks/useCart'
+import { useUser } from '../../hooks/useUser'
+
+import { ArrowLeft, DeleteIcon } from '../../components/Icons'
+
+import './Cart.css'
 
 export function Cart (): JSX.Element {
   const { cart, addToCart, removeFromCart, decrementQuantity } = useCart()
@@ -60,7 +63,7 @@ export function Cart (): JSX.Element {
 
           {
             totalItems === 0
-              ? <p>your cart is empty!</p>
+              ? <p>tu carrito esta vacio!</p>
               : cart.map(item => {
                 return (
                   <li key={item.id} className='item-container'>

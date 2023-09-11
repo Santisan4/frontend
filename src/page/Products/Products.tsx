@@ -21,7 +21,6 @@ export function Products (): JSX.Element {
   const { filterProducts } = useFilters()
 
   const filteredProducts = filterProducts(products)
-  console.log(filteredProducts)
 
   useEffect(() => {
     productService.getProducts()
@@ -44,7 +43,7 @@ export function Products (): JSX.Element {
           filteredProducts.map((product: ProductsWithLikes) => {
             return (
               <div key={product.id} className='card-container'>
-                <Link to={`/products/${product.id}`}> <img src={product.image} alt='' /></Link>
+                <Link to={`${product.id}`}> <img src={product.image} alt='' /></Link>
                 <p className='name'> {product.title} </p>
                 <strong>${product.price}</strong>
                 {/* <span onClick={() => { handleLike(product.id) }} className={product.likes !== undefined ? 'fav-icon-container' : ''}><FavIcon /></span> */}

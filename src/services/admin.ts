@@ -32,14 +32,15 @@ const getProducts = async (): Promise<ApiResponseProducts> => {
   return await request.then(response => response.data)
 }
 
-const createProduct = async (formData: FormCreateProductType): Promise<ProductData> => {
+const createProduct = async (newProduct: FormCreateProductType): Promise<ProductData> => {
   const config = {
     headers: {
-      Authorization: token
+      Authorization: token,
+      'Content-Type': 'multipart/form-data'
     }
   }
 
-  const { data } = await axios.post<ProductData>(`${baseUrl}/products`, formData, config)
+  const { data } = await axios.post<ProductData>(`${baseUrl}/products`, newProduct, config)
   return data
 }
 
@@ -57,7 +58,8 @@ const getOneProduct = async (id: number): Promise<ProductData> => {
 const updateProduct = async (id: number, formData: ProductForm): Promise<ProductData> => {
   const config = {
     headers: {
-      Authorization: token
+      Authorization: token,
+      'Content-Type': 'multipart/form-data'
     }
   }
 

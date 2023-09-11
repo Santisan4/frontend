@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import { type ProductData, type EditForm } from '../../types'
 import adminService from '../../services/admin.ts'
 
 import './styles.css'
+import { ArrowLeft } from '../../components/Icons.tsx'
 
 export function EditProduct (): JSX.Element {
   const [product, setProduct] = useState<EditForm>({
@@ -71,15 +72,6 @@ export function EditProduct (): JSX.Element {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
 
-    // const formData = new FormData()
-
-    // formData.append('title', product.title)
-    // formData.append('description', product.description)
-    // formData.append('price', String(product.price))
-    // formData.append('stock', String(product.stock))
-    // formData.append('category', product.category)
-    // formData.append('image', image)
-
     const formData = {
       title: product.title,
       description: product.description,
@@ -101,8 +93,11 @@ export function EditProduct (): JSX.Element {
   }
 
   return (
-    <div className='edit-product-form'>
-      <h2>Editar Producto</h2>
+    <section className='edit-product-form'>
+      <div className='title-edit-product-container'>
+        <Link to='/admin/products' className='arrow-back'><ArrowLeft /></Link>
+        <h2 className='title-edit-product'>Editar Producto</h2>
+      </div>
       <form onSubmit={handleSubmit}>
         <label>
           Título:
@@ -128,6 +123,6 @@ export function EditProduct (): JSX.Element {
         </label>
         <button type='submit'>Guardar Cambios</button>
       </form>
-    </div>
+    </section>
   )
 }

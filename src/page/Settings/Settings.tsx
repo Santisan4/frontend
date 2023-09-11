@@ -1,8 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom'
 
-import { ArrowLeft, ArrowRight, FAQIcon, LegalIcon, LogoutIcon, MyAccountIcon } from '../../components/Icons'
 import adminService from '../../services/admin.ts'
 import { useUser } from '../../hooks/useUser.tsx'
+
+import {
+  ArrowRight,
+  FAQIcon,
+  LegalIcon,
+  LogoutIcon,
+  MyAccountIcon
+} from '../../components/Icons'
 
 import './Settings.css'
 
@@ -17,9 +24,9 @@ export function Settings (): JSX.Element {
     window.localStorage.removeItem('cart')
     navigate('/')
   }
+
   return (
     <section className='settings-container'>
-      <Link to='/' className='icon-back-settings'><ArrowLeft /></Link>
       <h1 className='title-settings'>Configuración</h1>
       <hr />
       <p className='title-section'>General</p>

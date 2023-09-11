@@ -13,15 +13,9 @@ export function Dashboard (): JSX.Element {
   const [users, setUsers] = useState<UserData[]>([])
   const [orders, setOrders] = useState<OrderType[]>([])
 
-  const { setUser, user } = useUser()
+  const { user } = useUser()
 
   useEffect(() => {
-    const userFromStorage = window.localStorage.getItem('user')
-    if (userFromStorage !== null) {
-      const userLogged = JSON.parse(userFromStorage)
-      setUser(userLogged)
-      adminService.setToken(userLogged.token)
-    }
     adminService.getUsers()
       .then(users => {
         setUsers(users)

@@ -44,13 +44,8 @@ export function NewProduct (): JSX.Element {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    // const formData = new FormData()
-    // formData.append('title', title)
-    // formData.append('description', description)
-    // formData.append('price', String(price))
-    // formData.append('category', category)
-    // formData.append('image', image)
-    const formData = {
+
+    const newProduct = {
       title,
       description,
       price,
@@ -58,7 +53,7 @@ export function NewProduct (): JSX.Element {
       image
     }
 
-    adminService.createProduct(formData)
+    adminService.createProduct(newProduct)
       .then(product => {
         console.log(product)
         // redirect to home
@@ -95,9 +90,8 @@ export function NewProduct (): JSX.Element {
           <input type='number' value={price} onChange={handleChangePreice} placeholder='$2400' required />
         </label>
         <label>
-          Categoría:
           <select onChange={handleChangeCategory}>
-            <option value='All'> Filtros  </option>
+            <option> Categorias  </option>
             <option value='Zapatos'> Zapatos </option>
             <option value='Remeras'> Remeras </option>
             <option value='Bermudas'> Bermudas </option>

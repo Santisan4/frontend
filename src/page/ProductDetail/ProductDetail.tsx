@@ -1,10 +1,12 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft } from '../../components/Icons'
-import './ProductDetail.css'
 import { useEffect, useState } from 'react'
-import productService from '../../services/product.ts'
+
 import { type ProductData } from '../../types'
+import { ArrowLeft } from '../../components/Icons'
 import { useCart } from '../../hooks/useCart.tsx'
+import productService from '../../services/product.ts'
+
+import './ProductDetail.css'
 
 export function ProductDetail (): JSX.Element {
   const [product, setProduct] = useState<ProductData>()
@@ -12,6 +14,8 @@ export function ProductDetail (): JSX.Element {
 
   const { id } = useParams()
   const idProduct = Number(id)
+
+  console.log(id)
 
   useEffect(() => {
     productService.productDetail(idProduct)
