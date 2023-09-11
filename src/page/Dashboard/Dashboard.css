@@ -7,6 +7,7 @@
   gap: 20px;
   background-color: cornflowerblue;
   height: 100%;
+  position: relative;
 }
 
 .user-container{
@@ -38,7 +39,7 @@
   display: flex;
   align-items: center;
   width: 90%;
-  justify-content: space-between;
+  justify-content: space-around;
   border: 1px solid #E0E0E0;
   background-color: white;
   opacity: 0.6;
@@ -49,22 +50,14 @@
 .title-sales{
   padding: 10px;
   margin: 0;
+  font-size: 25px
 }
 
 .value-sales{
   padding: 10px;
   margin: 0;
-}
-
-.percent-container{
-  display: flex;
-  align-items: center;
-}
-
-.percent{
-  padding: 10px;
   color: green;
-  font-size: 30px;
+  font-size: 25px
 }
 
 .users-total-container{
@@ -154,3 +147,13 @@
   padding: 10px;
 }
 
+.link-home{
+  position: absolute;
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+  width: 100%;
+  bottom: 0;
+  padding: 10px;
+  text-align: center;
+}

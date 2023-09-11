@@ -7,13 +7,13 @@ export function Review (): JSX.Element {
     <section className='review-container'>
       <div className='modal'>
         <div className='check-container'> <Check /></div>
-        <h1 className='title-review'>We are on it!</h1>
+        <h1 className='title-review'>Estamos en ello!</h1>
         <div className='description'>
-          <p className='review-p'>Your payment has been received and you will </p>
-          <p className='review-p'>get notifications for your order is date</p>
+          <p className='review-p'>Su pago ha sido recibido</p>
+          <p className='review-p'>será notificado via correo electronico</p>
         </div>
 
-        <Link to='/' className='button-arrow'> <LeftArrow /> Go back home</Link>
+        <Link to='/' className='button-arrow'> <LeftArrow /> Volver a la home </Link>
       </div>
     </section>
   )

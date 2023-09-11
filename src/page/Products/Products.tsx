@@ -45,8 +45,6 @@ export function Products (): JSX.Element {
             return (
               <div key={product.id} className='card-container'>
                 <Link to={`/products/${product.id}`}> <img src={product.image} alt='' /></Link>
-                <p className='news'>Lo nuevo</p>
-                <strong className='autor'>Bermudas The Golfer Shop</strong>
                 <p className='name'> {product.title} </p>
                 <strong>${product.price}</strong>
                 {/* <span onClick={() => { handleLike(product.id) }} className={product.likes !== undefined ? 'fav-icon-container' : ''}><FavIcon /></span> */}

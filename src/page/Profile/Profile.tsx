@@ -18,7 +18,7 @@ export function Profile (): JSX.Element {
         <p className='email-profile'>{user?.email}</p>
       </div>
 
-      <Link to='/settings/santiago/edit' className='edit-section'><Edit /> Edit Profile</Link>
+      <Link to='/settings/santiago/edit' className='edit-section'><Edit /> Editar perfil</Link>
 
       <div className='info-items-profile'>
 
@@ -26,7 +26,7 @@ export function Profile (): JSX.Element {
           <div className='container-title-item'>
             <p className='item-title'>
               <OrdersIcon />
-              Mis órdenes
+              Mis compras
             </p>
           </div>
           <span className='icon-profile'><ArrowRight /></span>

@@ -43,39 +43,39 @@ export function Register (): JSX.Element {
 
   return (
     <div className='signup-container'>
-      <h1>Create an Account</h1>
+      <h1>Nueva cuenta</h1>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor='name'>Name</label>
-        <input type='text' id='username' value={name} onChange={handleChangeName} name='name' placeholder='Choose a name' required />
+        <label htmlFor='name'>Nombre</label>
+        <input type='text' id='username' value={name} onChange={handleChangeName} name='name' placeholder='Ej.Fulanito' required />
 
-        <label htmlFor='email'>Email</label>
+        <label htmlFor='email'>Correo electrónico</label>
         <input
           type='email' value={email} id='email' name='email'
-          placeholder='Enter your email' onChange={handleChangeEmail} required
+          placeholder='Ej.: email@email.com' onChange={handleChangeEmail} required
         />
-        <label htmlFor='password'>Password</label>
-        <input type='password' id='password' value={password} onChange={handleChangePassword} name='password' placeholder='Choose a password' required />
+        <label htmlFor='password'>Contraseña</label>
+        <input type='password' id='password' value={password} onChange={handleChangePassword} name='password' required />
 
-        <button type='submit'>Sign Up</button>
+        <button type='submit'>Registrarse</button>
         {errorMessage ?? <p className='error-message'>{errorMessage}</p>}
       </form>
 
-      <p className='login-link'>Already have an account? <Link to='/user/login'>Log In</Link></p>
-      <div className='divider'>or</div>
+      <p className='login-link'>Ya tienes cuenta? <Link to='/user/login'>Ingresa</Link></p>
+      <div className='divider'>o</div>
 
       <button className='app-register-button'>
         <span className='icon-app'>
           <img src='/go.png' alt='Google Icon' />
         </span>
-        Register with Google
+        Registrate con Google
       </button>
 
       <button className='app-register-button'>
         <span className='icon-app'>
           <img src='/fb.png' alt='facebook Icon' />
         </span>
-        Sign In with Facebook
+        Registrate con Facebook
       </button>
 
     </div>

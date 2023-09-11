@@ -26,7 +26,7 @@ export function ProductDetail (): JSX.Element {
   return (
     <div className='product-container'>
 
-      <Link to='/products' className='arrow'><ArrowLeft /></Link>
+      <Link to='/products' className='arrow'><ArrowLeft /> Volver </Link>
 
       <img src={product?.image} alt='' />
 
@@ -36,7 +36,7 @@ export function ProductDetail (): JSX.Element {
         <strong>${product?.price}</strong>
       </div>
 
-      <button onClick={() => { handleAddToCart(product as ProductData) }}>Add to cart</button>
+      <button onClick={() => { handleAddToCart(product as ProductData) }}>Agregar al carrito</button>
 
       <p className='product-review'>
         {product?.description}

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { type ProductData, type EditForm } from '../../types'
-import adminService from '../../services/adminProduct.ts'
+import adminService from '../../services/admin.ts'
 
 import './styles.css'
 

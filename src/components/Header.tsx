@@ -1,7 +1,17 @@
-import { Link } from 'react-router-dom'
-import { Cart, CloseIcon, DashboardIcon, HomeIcon, IconProducts, Logo, MenuMobile, SettingIcon, User } from './Icons.tsx'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
+import {
+  Cart,
+  CloseIcon,
+  DashboardIcon,
+  HomeIcon,
+  IconProducts,
+  Logo,
+  MenuMobile,
+  SettingIcon,
+  User
+} from './Icons.tsx'
 import { UserActive } from './UserActive/UserActive.tsx'
 import { useUser } from '../hooks/useUser.tsx'
 
@@ -45,16 +55,16 @@ export function Header (): JSX.Element {
         </div>
         <div className='items-menu'>
           <Link to='/'> <HomeIcon /> Home </Link>
-          <Link to='/products'> <IconProducts /> Products </Link>
-          <Link to='/cart'> <Cart /> Cart</Link>
+          <Link to='/products'> <IconProducts /> Productos </Link>
+          <Link to='/cart'> <Cart /> Carrito </Link>
           {
             user === null
-              ? <Link to='/user/login'> <User /> User</Link>
-              : <Link to='/settings'> <SettingIcon />  My account </Link>
+              ? <Link to='/user/login'> <User /> Usuarios </Link>
+              : <Link to='/settings'> <SettingIcon />  Mi cuenta </Link>
           }
           {
             user !== null && user.admin > 0
-              ? <Link to='/admin/dashboard'> <DashboardIcon /> Dashboard </Link>
+              ? <Link to='/admin/dashboard'> <DashboardIcon /> Panel Admin </Link>
               : null
           }
         </div>

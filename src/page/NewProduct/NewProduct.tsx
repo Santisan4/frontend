@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft } from '../../components/Icons'
-import adminService from '../../services/adminProduct.ts'
+import adminService from '../../services/admin.ts'
 
 import './styles.css'
 
@@ -73,21 +73,6 @@ export function NewProduct (): JSX.Element {
       .catch(err => {
         console.log(err)
       })
-
-    // try {
-    //   const response = await adminService.createProduct(formData)
-
-    //   console.log(response)
-    //   // redirect to home
-    //   navigate('/admin/dashboard')
-    //   // clear form
-    //   setTitle('')
-    //   setDescription('')
-    //   setPrice('')
-    //   setCategory('')
-    // } catch (error) {
-    //   console.log(error)
-    // }
   }
 
   return (
@@ -99,15 +84,15 @@ export function NewProduct (): JSX.Element {
       <form className='form' onSubmit={handleSubmit} encType='multipart/form-data'>
         <label>
           Título:
-          <input type='text' value={title} onChange={handleChangeTitle} required />
+          <input type='text' value={title} onChange={handleChangeTitle} placeholder='Campera' required />
         </label>
         <label>
           Descripción:
-          <textarea value={description} onChange={handleChangeDescription} required />
+          <textarea value={description} onChange={handleChangeDescription} placeholder='100% algodón, nueva temporada, etc' required />
         </label>
         <label>
           Precio:
-          <input type='number' value={price} onChange={handleChangePreice} required />
+          <input type='number' value={price} onChange={handleChangePreice} placeholder='$2400' required />
         </label>
         <label>
           Categoría:

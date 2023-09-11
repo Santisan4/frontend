@@ -2,7 +2,7 @@ import { Link, redirect } from 'react-router-dom'
 import { ArrowLeft, DeleteProduct, Edit } from '../../components/Icons.tsx'
 import './styles.css'
 import { useEffect, useState } from 'react'
-import adminService from '../../services/adminProduct.ts'
+import adminService from '../../services/admin.ts'
 import { useUser } from '../../hooks/useUser'
 import { type ProductData } from '../../types'
 
@@ -50,15 +50,15 @@ export function ProductsList (): JSX.Element {
 
       <div className='back'>
         <Link to='/admin/dashboard' className='arrow'><ArrowLeft /></Link>
-        <h2>Productos Disponibles</h2>
+        <h2>Lista de productos</h2>
       </div>
       <div className='titles'>
         <p className='title'>id</p>
-        <p className='title'>title</p>
-        <p className='title'>price</p>
+        <p className='title'>Título</p>
+        <p className='title'>precio</p>
         <p className='title'>stock</p>
-        <p className='title'>edit</p>
-        <p className='title'>delete</p>
+        <p className='title'>editar</p>
+        <p className='title'>eliminar</p>
       </div>
       <ul className='list'>
         {
@@ -75,7 +75,7 @@ export function ProductsList (): JSX.Element {
         }
         {
           loading
-            ? <p>Loading...</p>
+            ? <p>Cargando...</p>
             : null
         }
         {

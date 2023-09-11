@@ -1,6 +1,5 @@
-import { useCart } from '../../hooks/useCart'
-
 import userService from '../../services/user.ts'
+import { useCart } from '../../hooks/useCart'
 import { useUser } from '../../hooks/useUser.tsx'
 
 import './styles.css'
@@ -34,29 +33,21 @@ export function OrderSummary (): JSX.Element {
 
       <div className='title-payment-container'>
         <div className='title-container'>
-          <h2>Please confirm submit your order</h2>
-          <p className='terms'>By clicking submit order, you agree to Eos <strong>Terms of Use and Privacy Policy</strong></p>
+          <h2>Por favor, confirme su compra</h2>
+          <p className='terms'>Al hacer click en confirmar compra, acepta los <strong>Términos y condiciones de EOS</strong></p>
         </div>
 
+        <h3>Forma de pago</h3>
         <div className='confirm-payment-container'>
 
-          <div className='payment-edit'>
-            <p id='payment'>Payment</p>
-            <button>Edit</button>
-          </div>
-
-          <div className='card-date'>
-            <img className='logo-mc' src='/mp.png' alt='' />
-            {/* <p className='card'> <img className='logo-mc' src='/mp.png' alt='' /> **** 6789</p>
-            <p> 01/24 </p> */}
-          </div>
+          <img className='logo-mp' src='/mp.png' alt='' />
 
         </div>
       </div>
 
       <div className='summary-button-container'>
         <div className='order-summary'>
-          <h3>Order summary</h3>
+          <h3>Resumen de su compra</h3>
           <div>
             <p>Items</p>
             <p>{totalItems}</p>
@@ -68,9 +59,8 @@ export function OrderSummary (): JSX.Element {
         </div>
 
         <form onSubmit={handleSubmit} className='button-submit-order'>
-          <button> Pay </button>
+          <button> Pagar </button>
         </form>
-        {/* <Link to='/cart/checkout/payment/review' className='button-submit-order'>Pay</Link> */}
       </div>
     </section>
   )

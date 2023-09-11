@@ -14,38 +14,34 @@ import { Dashboard } from './page/Dashboard/Dashboard.tsx'
 import { NewProduct } from './page/NewProduct/NewProduct.tsx'
 import { ProductsList } from './page/ProductList/ProductsList.tsx'
 import { EditProduct } from './page/EditProduct/EditProduct.tsx'
-import { CartProvider } from './context/cart.tsx'
-import { FiltersProvider } from './context/filters.tsx'
 import { Settings } from './page/Settings/Settings.tsx'
 import { Profile } from './page/Profile/Profile.tsx'
 import { ProfileEdit } from './page/ProfileEdit/ProfileEdit.tsx'
 
 function App (): JSX.Element {
   return (
-    <CartProvider>
-      <FiltersProvider>
-        <Header />
-        <Routes>
-          <Route index path='/' element={<Home />} />
-          <Route path='/products' element={<Products />} />
-          <Route path='/products/:id' element={<ProductDetail />} />
-          <Route path='/user/login' element={<Login />} />
-          <Route path='/user/register' element={<Register />} />
-          <Route path='/settings' element={<Settings />} />
-          <Route path='/settings/santiago' element={<Profile />} />
-          <Route path='/settings/santiago/edit' element={<ProfileEdit />} />
-          <Route path='/admin/dashboard' element={<Dashboard />} />
-          <Route path='/admin/products' element={<ProductsList />} />
-          <Route path='/admin/product' element={<NewProduct />} />
-          <Route path='/admin/products/:id/edit' element={<EditProduct />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/cart/checkout' element={<Checkout />} />
-          <Route path='/cart/checkout/payment' element={<OrderSummary />} />
-          <Route path='/cart/checkout/payment/review' element={<Review />} />
-          <Route path='*' element={<h1>Not Found</h1>} />
-        </Routes>
-      </FiltersProvider>
-    </CartProvider>
+    <>
+      <Header />
+      <Routes>
+        <Route index path='/' element={<Home />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/products/:id' element={<ProductDetail />} />
+        <Route path='/user/login' element={<Login />} />
+        <Route path='/user/register' element={<Register />} />
+        <Route path='/settings' element={<Settings />} />
+        <Route path='/settings/santiago' element={<Profile />} />
+        <Route path='/settings/santiago/edit' element={<ProfileEdit />} />
+        <Route path='/admin/dashboard' element={<Dashboard />} />
+        <Route path='/admin/products' element={<ProductsList />} />
+        <Route path='/admin/product' element={<NewProduct />} />
+        <Route path='/admin/products/:id/edit' element={<EditProduct />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/cart/checkout' element={<Checkout />} />
+        <Route path='/cart/checkout/payment' element={<OrderSummary />} />
+        <Route path='/cart/checkout/payment/review' element={<Review />} />
+        <Route path='*' element={<h1>Not Found</h1>} />
+      </Routes>
+    </>
   )
 }
 

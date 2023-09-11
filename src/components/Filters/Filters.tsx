@@ -4,7 +4,7 @@ import { FilterIcon } from '../Icons'
 import './Filters.css'
 
 export function Filters (): JSX.Element {
-  const { filters, setFilters } = useFilters()
+  const { setFilters } = useFilters()
 
   const handleChangeCategory = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     setFilters((prevState: FiltersType) => (
@@ -16,11 +16,10 @@ export function Filters (): JSX.Element {
   }
   return (
     <div className='filters-container'>
-      <label className='title-filters'> {filters.category} </label>
       <div id='filter-container'>
         <FilterIcon />
         <select className='custom-select' onChange={handleChangeCategory}>
-          <option value='All'> Todos  </option>
+          <option value='Todos'> Todos  </option>
           <option value='Zapatos'> Zapatos </option>
           <option value='Remeras'> Remeras </option>
           <option value='Bermudas'> Bermudas </option>

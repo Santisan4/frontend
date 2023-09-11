@@ -51,7 +51,7 @@ export function Cart (): JSX.Element {
     <section className='cart-container'>
       <div className='header-cart'>
         <Link className='arrow' to='/'> <ArrowLeft /> </Link>
-        <h1> My Cart (3)</h1>
+        <h1> Mi Carrito ({totalItems})</h1>
       </div>
 
       <div className='items-summary-container'>

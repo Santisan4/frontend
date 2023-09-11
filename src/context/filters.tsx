@@ -7,7 +7,7 @@ interface Props {
 
 export const FiltersContext = createContext<FiltersContextType>({
   filters: {
-    category: 'All',
+    category: 'Todos',
     minPrice: 0
   },
   setFilters: () => {}
@@ -15,7 +15,7 @@ export const FiltersContext = createContext<FiltersContextType>({
 
 export function FiltersProvider ({ children }: Props): JSX.Element {
   const [filters, setFilters] = useState({
-    category: 'All',
+    category: 'Todos',
     minPrice: 0
   })
 

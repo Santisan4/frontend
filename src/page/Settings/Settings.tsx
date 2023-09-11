@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 
 import { ArrowLeft, ArrowRight, FAQIcon, LegalIcon, LogoutIcon, MyAccountIcon } from '../../components/Icons'
-import adminService from '../../services/adminProduct.ts'
+import adminService from '../../services/admin.ts'
 import { useUser } from '../../hooks/useUser.tsx'
 
 import './Settings.css'

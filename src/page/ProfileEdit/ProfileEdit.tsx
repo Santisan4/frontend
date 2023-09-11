@@ -16,7 +16,7 @@ export function ProfileEdit (): JSX.Element {
           <label htmlFor='name'>Nombre</label>
           <input type='text' id='name' name='name' value={user?.name} />
 
-          <label htmlFor='email'>email</label>
+          <label htmlFor='email'>Correo electrónico</label>
           <input type='email' id='email' name='email' value={user?.email} />
 
           <button className='button-edit'>Cambiar contraseña</button>

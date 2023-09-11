@@ -5,6 +5,8 @@ import './index.css'
 
 import { BrowserRouter } from 'react-router-dom'
 import { UserProvider } from './context/user.tsx'
+import { CartProvider } from './context/cart.tsx'
+import { FiltersProvider } from './context/filters.tsx'
 
 const root = document.getElementById('root')
 
@@ -12,9 +14,13 @@ if (root instanceof HTMLElement) {
   createRoot(root).render(
     <BrowserRouter>
       <UserProvider>
-        <StrictMode>
-          <App />
-        </StrictMode>
+        <CartProvider>
+          <FiltersProvider>
+            <StrictMode>
+              <App />
+            </StrictMode>
+          </FiltersProvider>
+        </CartProvider>
       </UserProvider>
 
     </BrowserRouter>
