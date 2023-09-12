@@ -5,6 +5,9 @@ import { useUser } from '../../hooks/useUser'
 
 export function Profile (): JSX.Element {
   const { user } = useUser()
+
+  const userPath = user !== null ? user.name : ''
+
   return (
     <section className='profile-page-container'>
       <div className='title-profile-container'>
@@ -18,7 +21,7 @@ export function Profile (): JSX.Element {
         <p className='email-profile'>{user?.email}</p>
       </div>
 
-      <Link to='/settings/santiago/edit' className='edit-section'><Edit /> Editar perfil</Link>
+      <Link to={`/settings/${userPath}/edit`} className='edit-section'><Edit /> Editar perfil</Link>
 
       <div className='info-items-profile'>
 

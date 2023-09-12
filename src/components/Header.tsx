@@ -44,17 +44,17 @@ export function Header (): JSX.Element {
           <Logo />
         </div>
         <div className='items-menu'>
-          <Link to='/'> <HomeIcon /> Home </Link>
-          <Link to='products'> <IconProducts /> Productos </Link>
-          <Link to='cart'> <Cart /> Carrito </Link>
+          <Link className='link-header' to='/'> <HomeIcon /> Home </Link>
+          <Link className='link-header' to='products'> <IconProducts /> Productos </Link>
+          <Link className='link-header' to='cart'> <Cart /> Carrito </Link>
           {
             user === null
-              ? <Link to='/user/login'> <User /> Usuarios </Link>
-              : <Link to='/settings'> <SettingIcon />  Mi cuenta </Link>
+              ? <Link className='link-header' to='/user/login'> <User /> Usuarios </Link>
+              : <Link className='link-header' to='/settings'> <SettingIcon />  Mi cuenta </Link>
           }
           {
             user !== null && user.admin > 0
-              ? <Link to='/admin/dashboard'> <DashboardIcon /> Panel Admin </Link>
+              ? <Link className='link-header' to='/admin/dashboard'> <DashboardIcon /> Panel Admin </Link>
               : null
           }
         </div>

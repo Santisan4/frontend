@@ -30,8 +30,8 @@ function App (): JSX.Element {
         <Route path='/user/login' element={<Login />} />
         <Route path='/user/register' element={<Register />} />
         <Route path='/settings' element={<Settings />} />
-        <Route path='/settings/santiago' element={<Profile />} />
-        <Route path='/settings/santiago/edit' element={<ProfileEdit />} />
+        <Route path='/settings/:user' element={<Profile />} />
+        <Route path='/settings/:user/edit' element={<ProfileEdit />} />
         <Route path='/admin'>
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='products' element={<ProductsList />} />

@@ -85,7 +85,7 @@ export interface FiltersContextType {
 export interface UseFiltersHook {
   filters: Filters
   setFilters: (filter: Filers) => void
-  filterProducts: (products: ProductData[], filters: FiltersType) => ProductData[]
+  filterProducts: (products: ProductData[]) => ProductData[]
 }
 
 // ORDERS
@@ -133,4 +133,10 @@ export interface ApiMPresponse {
   shipments: Shipments
   total_amount: null
   last_updated: null
+}
+
+export interface ApiProductsResponse {
+  products: ProductData[]
+  errorMessage: string | null
+  loading: boolean
 }

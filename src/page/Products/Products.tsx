@@ -1,36 +1,17 @@
 import { Link } from 'react-router-dom'
-// import { FavIcon } from '../../components/Icons.tsx'
-import './Products.css'
-import { useEffect, useState } from 'react'
-import productService from '../../services/product.ts'
-import { type ProductData, type ApiResponseProducts } from '../../types'
-import { Filters } from '../../components/Filters/Filters.tsx'
-import { useFilters } from '../../hooks/useFilters.tsx'
 
-interface ProductsWithLikes {
-  id: number
-  description: string
-  title: string
-  price: number
-  image: string
-  likes?: true | false
-}
+import { type ProductData } from '../../types'
+import { useFilters } from '../../hooks/useFilters.tsx'
+import { useProducts } from '../../hooks/useProducts.tsx'
+import { Filters } from '../../components/Filters/Filters.tsx'
+
+import './Products.css'
 
 export function Products (): JSX.Element {
-  const [products, setProducts] = useState<ProductData[]>([])
+  const { products } = useProducts()
   const { filterProducts } = useFilters()
 
   const filteredProducts = filterProducts(products)
-
-  useEffect(() => {
-    productService.getProducts()
-      .then((products: ApiResponseProducts) => {
-        setProducts(products)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [])
 
   return (
     <section className='section-container'>
@@ -40,16 +21,17 @@ export function Products (): JSX.Element {
       <div className='products-container'>
 
         {
-          filteredProducts.map((product: ProductsWithLikes) => {
-            return (
-              <div key={product.id} className='card-container'>
-                <Link to={`${product.id}`}> <img src={product.image} alt='' /></Link>
-                <p className='name'> {product.title} </p>
-                <strong>${product.price}</strong>
-                {/* <span onClick={() => { handleLike(product.id) }} className={product.likes !== undefined ? 'fav-icon-container' : ''}><FavIcon /></span> */}
-              </div>
-            )
-          })
+          filteredProducts.length === 0
+            ? <p className='no-products'>No hay productos</p>
+            : filteredProducts.map((product: ProductData) => {
+              return (
+                <div key={product.id} className='card-container'>
+                  <Link to={`${product.id}`}> <img src={product.image} alt='' /></Link>
+                  <p className='name'> {product.title} </p>
+                  <strong>${product.price}</strong>
+                </div>
+              )
+            })
         }
 
       </div>

@@ -14,7 +14,7 @@ import {
 import './Settings.css'
 
 export function Settings (): JSX.Element {
-  const { setUser } = useUser()
+  const { setUser, user } = useUser()
   const navigate = useNavigate()
 
   const handleLogout = (): void => {
@@ -24,6 +24,8 @@ export function Settings (): JSX.Element {
     window.localStorage.removeItem('cart')
     navigate('/')
   }
+
+  const userPath = user !== null ? user.name : ''
 
   return (
     <section className='settings-container'>
@@ -35,7 +37,7 @@ export function Settings (): JSX.Element {
           <p className='p-option'><MyAccountIcon /></p>
           <p className='p-option'>Mi cuenta</p>
         </div>
-        <Link to='/settings/santiago' className='p-option-arrow'><ArrowRight /></Link>
+        <Link to={`/settings/${userPath}`} className='p-option-arrow'><ArrowRight /></Link>
       </article>
 
       <article className='container-option'>
