@@ -15,7 +15,7 @@ export const FiltersContext = createContext<FiltersContextType>({
 
 export function FiltersProvider ({ children }: Props): JSX.Element {
   const [filters, setFilters] = useState({
-    category: [],
+    category: ['Todos'],
     minPrice: 0
   })
 

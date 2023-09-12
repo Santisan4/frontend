@@ -1,48 +1,83 @@
-.section-container{
-  width: 100%;
-  /* padding: 10px 0; */
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  gap: 10px;
-  font-family: 'Blinker', sans-serif;
+@media (width <= 475px) {
+  .section-container {
+    width: 100%;
+    /* padding: 10px 0; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 10px;
+    font-family: 'Blinker', sans-serif;
+  }
+
+  .products-container {
+    width: 100%;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    place-items: center;
+    gap: 10px 0;
+  }
+
+  .card-container {
+    text-decoration: none;
+    color: #000;
+    width: 150px;
+    /* height: 300px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .card-container img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+  }
+
+  .news {
+    color: tomato;
+  }
+
+  .card-container strong {
+    font-size: 1.2rem;
+  }
+
+  .fav-icon-container {
+    color: tomato;
+  }
 }
 
-.products-container{
-  width: 100%;
-  padding: 15px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  place-items: center;
-  gap: 10px 0;
-}
 
-.card-container{
-  text-decoration: none;
-  color: #000;
-  width: 150px;
-  /* height: 300px; */
-  display: flex;
-  flex-direction: column;
-  /* justify-content: space-between; */
-  gap: 5px;
-  cursor: pointer;
-}
+@media (width >= 768px){
+  .section-container{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+  }
 
-.card-container img{
-  width: 140px;
-  height: 140px;
-  object-fit: contain;
-}
+  .products-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+  }
 
-.news{
-  color: tomato;
-}
+  .card-container{
+    text-decoration: none;
+    color: #000;
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
 
-.card-container strong{
-  font-size: 1.2rem;
-}
-
-.fav-icon-container{
-  color: tomato;
+  .img-product{
+    width: 100%;
+    object-fit: contain;
+  }
 }

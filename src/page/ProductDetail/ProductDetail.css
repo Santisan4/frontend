@@ -1,52 +1,87 @@
-.product-container{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 0 15px;
-  gap: 15px;
+@media (width <= 475px){
+  .product-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 15px;
+    gap: 15px;
+  }
+
+  .arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .product-container img {
+    align-self: center;
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+    gap: 7px;
+  }
+
+  .product-info span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: orange;
+  }
+
+  .product-info strong {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #333;
+  }
+
+  .product-review {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 7px;
+    font-size: 1.2rem;
+  }
 }
 
-.arrow{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
+@media (width >= 769px){
+  .arrow{
+    display: none;
+  }
 
-.product-container img{
-  align-self: center;
-  width: 100%;
-  max-width: 360px;
-  height: auto;
-}
+  .product-container{
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+  }
 
-.product-info{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 15px;
-  gap: 7px;
-} 
+  .img-product-detail{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    align-self: center;
+  }
 
-.product-info span{
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: orange;
-}
+  .product-info{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
 
-.product-info strong{
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: #333;
-}
-
-.product-review{
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  gap: 7px;
-  font-size: 1.2rem;
+  .product-review{
+    padding: 10px;
+  }
 }

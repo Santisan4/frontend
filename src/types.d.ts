@@ -140,3 +140,5 @@ export interface ApiProductsResponse {
   errorMessage: string | null
   loading: boolean
 }
+
+export type Category = 'Pantalones' | 'Bermudas' | 'Gorros' | 'Remeras' | 'Zapatos' | 'Accesorios' | 'Palos' | 'Pelotas' | 'Guantes' | 'Bolsos' | 'Otros'

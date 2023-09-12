@@ -26,7 +26,7 @@ export function Products (): JSX.Element {
             : filteredProducts.map((product: ProductData) => {
               return (
                 <div key={product.id} className='card-container'>
-                  <Link to={`${product.id}`}> <img src={product.image} alt='' /></Link>
+                  <Link to={`${product.id}`} className='link-product-detail'> <img className='img-product' src={product.image} alt='' /></Link>
                   <p className='name'> {product.title} </p>
                   <strong>${product.price}</strong>
                 </div>

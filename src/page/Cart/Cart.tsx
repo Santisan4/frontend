@@ -54,12 +54,12 @@ export function Cart (): JSX.Element {
     <section className='cart-container'>
       <div className='header-cart'>
         <Link className='arrow' to='/'> <ArrowLeft /> </Link>
-        <h1> Mi Carrito ({totalItems})</h1>
       </div>
 
       <div className='items-summary-container'>
 
         <ul className='cart-items'>
+          <h1 className='title-cart'> Mi Carrito ({totalItems})</h1>
 
           {
             totalItems === 0
@@ -68,21 +68,20 @@ export function Cart (): JSX.Element {
                 return (
                   <li key={item.id} className='item-container'>
                     <div className='item-info'>
-                      <img className='img-product-cart' src={item.image} alt='' />
-                    </div>
-
-                    <div className='item-info'>
-                      <p>{item.title}</p>
-                      <div id='quantity'>
-                        <span className='button-q' onClick={() => { handleClickRemove(item) }}> - </span>
-                        <p>{item.quantity}</p>
-                        <span className='button-q' onClick={() => { handleClickAdd(item) }}> + </span>
+                      <div className='img-title-cart'>
+                        <img className='img-product-cart' src={item.image} alt='' />
+                        <h3>{item.title}</h3>
                       </div>
-                    </div>
+                      <div className='quantity-price-cart'>
+                        <div className='items-q'>
+                          <span className='button-q' onClick={() => { handleClickRemove(item) }}> - </span>
+                          <p className='button-q'>{item.quantity}</p>
+                          <span className='button-q' onClick={() => { handleClickAdd(item) }}> + </span>
+                        </div>
 
-                    <div className='item-info'>
-                      <p>${item.price}</p>
-                      <button onClick={() => { handleRemoveProduct(item) }}><DeleteIcon /></button>
+                        <p>${item.price}</p>
+                        <button className='button-cart-delete' onClick={() => { handleRemoveProduct(item) }}><DeleteIcon /></button>
+                      </div>
                     </div>
                   </li>
                 )
@@ -92,11 +91,11 @@ export function Cart (): JSX.Element {
 
         <div className='summary'>
 
-          <h2>Total</h2>
-          <p>Items: {totalItems}</p>
-          <h4>Total: ${totalPrice}</h4>
+          <h2 className='title-summary-cart'> <span>Detalle de tu carrito </span></h2>
+          <p className='items-summary-cart'>Items:  <span>{totalItems}</span></p>
+          <h4 className='total-summary-cart'>Total: <span> ${totalPrice} </span></h4>
 
-          <button onClick={handleCheckout} className='button-checkout'> Checkout </button>
+          <button onClick={handleCheckout} className='button-checkout'> Confirmar carrito </button>
           <p className='error-message'>{error}</p>
 
         </div>
