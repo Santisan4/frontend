@@ -35,6 +35,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+  color: black;
 }
 
 .p-option-arrow{
@@ -49,6 +51,11 @@
   display: flex;
   align-items: center;
   padding: 10px;
+}
+
+.logout-container:hover{
+  background-color: cornflowerblue;
+  border-radius: 10px;
 }
 
 .p-logout{

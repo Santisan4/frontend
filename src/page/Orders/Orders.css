@@ -1,0 +1,53 @@
+@media (width <= 475px){
+  .orders-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .title-orders {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .column-table {
+    border: 1px solid black;
+    width: 10px;
+  }
+
+  .row-table {
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+@media (width >= 769px){
+  .orders-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .title-orders {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .table-orders{
+    padding: 10px;
+  }
+
+  .column-table{
+    border: 1px solid black;
+  }
+
+  .row-table{
+    padding: 10px;
+    text-align: center;
+  }
+}
+

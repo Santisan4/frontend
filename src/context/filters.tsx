@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react'
-import { type FiltersContextType } from '../types'
+import { type FiltersType, type FiltersContextType } from '../types'
 
 interface Props {
   children: React.ReactNode
@@ -7,15 +7,15 @@ interface Props {
 
 export const FiltersContext = createContext<FiltersContextType>({
   filters: {
-    category: [],
+    category: 'Todos',
     minPrice: 0
   },
   setFilters: () => {}
 })
 
 export function FiltersProvider ({ children }: Props): JSX.Element {
-  const [filters, setFilters] = useState({
-    category: ['Todos'],
+  const [filters, setFilters] = useState<FiltersType>({
+    category: 'Todos',
     minPrice: 0
   })
 

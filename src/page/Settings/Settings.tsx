@@ -33,11 +33,11 @@ export function Settings (): JSX.Element {
       <hr />
       <p className='title-section'>General</p>
       <article className='container-option'>
-        <div className='div-option'>
+        <Link to={`/settings/${userPath}`} className='div-option'>
           <p className='p-option'><MyAccountIcon /></p>
           <p className='p-option'>Mi cuenta</p>
-        </div>
-        <Link to={`/settings/${userPath}`} className='p-option-arrow'><ArrowRight /></Link>
+        </Link>
+        <p className='p-option-arrow'><ArrowRight /></p>
       </article>
 
       <article className='container-option'>

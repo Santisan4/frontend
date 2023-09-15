@@ -5,7 +5,7 @@ import { type OrderType, type UserData } from '../../types'
 import adminService from '../../services/admin.ts'
 
 import { useUser } from '../../hooks/useUser.tsx'
-import { Add, HomeIcon, ProductsIcon, Users } from '../../components/Icons'
+import { Add, ProductsIcon, Users } from '../../components/Icons'
 
 import './Dashboard.css'
 
@@ -45,7 +45,6 @@ export function Dashboard (): JSX.Element {
           <h1 className='title-user'>Hola {user?.name}!</h1>
           <p className='role-user'>administrador</p>
         </div>
-        <img className='img-user' src='/rengo2.jpeg' alt='' />
       </div>
 
       <div className='sales-container'>
@@ -78,10 +77,6 @@ export function Dashboard (): JSX.Element {
       <Link to='/admin/users' className='all-products'>
         <Users />
         <h3>Usuarios</h3>
-      </Link>
-
-      <Link to='/' className='link-home'>
-        <HomeIcon />
       </Link>
 
     </div>

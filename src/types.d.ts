@@ -70,21 +70,19 @@ export interface CartContextType {
   decrementQuantity: (product: ProductData) => void
 }
 
-// export type Filters = 'All' | 'Pantalones' | 'Bermudas' | 'Gorros' | 'Remeras' | 'Zapatos' | 'Accesorios' | 'Palos' | 'Pelotas' | 'Guantes' | 'Bolsos' | 'Otros'
-
 export interface FiltersType {
-  category: string[]
+  category: CategoryType
   minPrice: number
 }
 
 export interface FiltersContextType {
-  filters: Filters
-  setFilters: (filter: Filers) => void
+  filters: FiltersType
+  setFilters: (filters: FiltersType) => void
 }
 
 export interface UseFiltersHook {
-  filters: Filters
-  setFilters: (filter: Filers) => void
+  filters: FiltersType
+  setFilters: (filters: FiltersType) => void
   filterProducts: (products: ProductData[]) => ProductData[]
 }
 
@@ -92,6 +90,17 @@ export interface UseFiltersHook {
 export interface OrderType {
   id: number
   user_id: number
+  order_id: string
+  order_type: string
+  amount: number
+  currency: string
+  created_at: string
+}
+
+// order type development
+export interface OrderTypeDev {
+  id: number
+  user_email: string
   order_id: string
   order_type: string
   amount: number
@@ -141,4 +150,8 @@ export interface ApiProductsResponse {
   loading: boolean
 }
 
-export type Category = 'Pantalones' | 'Bermudas' | 'Gorros' | 'Remeras' | 'Zapatos' | 'Accesorios' | 'Palos' | 'Pelotas' | 'Guantes' | 'Bolsos' | 'Otros'
+export type CategoryType = 'Pantalones' | 'Bermudas' | 'Gorros' | 'Remeras' | 'Zapatos' | 'Accesorios' | 'Palos' | 'Pelotas' | 'Guantes' | 'Bolsos' | 'Otros' | 'Todos'
+
+export interface useOrdersHook {
+  orders: OrderType[]
+}

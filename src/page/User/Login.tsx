@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 
 import userService from '../../services/user.ts'
 import adminService from '../../services/admin.ts'
@@ -14,18 +14,24 @@ export function Login (): JSX.Element {
   const navigate = useNavigate()
   const { setUser } = useUser()
 
+  const inputEmailId = useId()
+  const inputPasswordId = useId()
+
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(e.target.value)
   }
 
-  const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChangePassword = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setPassword(e.target.value)
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
-    userService.login({ email, password })
-      .then(user => {
+    userService
+      .login({ email, password })
+      .then((user) => {
         setUser(user)
         userService.setToken(user.token)
         adminService.setToken(user.token)
@@ -37,7 +43,7 @@ export function Login (): JSX.Element {
         setEmail('')
         setPassword('')
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err.response.data.error)
         setMessage(err.response.data.error)
         setTimeout(() => {
@@ -48,17 +54,40 @@ export function Login (): JSX.Element {
 
   return (
     <div className='login-container'>
+      <h1 className='title-form-user'>Bienvenido de nuevo!</h1>
 
-      <h1>Bienvenido de nuevo!</h1>
+      <form className='form' onSubmit={handleSubmit}>
+        <label className='label-form' htmlFor={inputEmailId}>
+          Correo electrónico
+        </label>
+        <input
+          autoFocus
+          className='input-form'
+          type='text'
+          id={inputEmailId}
+          name='email'
+          value={email}
+          onChange={handleChangeEmail}
+          placeholder='Ej. : email@email.com'
+          required
+        />
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='email'>Correo electrónico</label>
-        <input type='text' id='email' name='email' value={email} onChange={handleChangeEmail} placeholder='Ej. : email@email.com' required />
+        <label className='label-form' htmlFor={inputPasswordId}>
+          Contraseña
+        </label>
+        <input
+          className='input-form'
+          type='password'
+          id={inputPasswordId}
+          name='password'
+          value={password}
+          onChange={handleChangePassword}
+          required
+        />
 
-        <label htmlFor='password'>Contraseña</label>
-        <input type='password' id='password' name='password' value={password} onChange={handleChangePassword} required />
-
-        <button type='submit'>Ingresar</button>
+        <button className='button-user' type='submit'>
+          Ingresar
+        </button>
         {message ?? <p className='error-message'>{message}</p>}
       </form>
 
@@ -70,18 +99,10 @@ export function Login (): JSX.Element {
 
       <button className='app-register-button'>
         <span className='icon-app'>
-          <img src='/go.png' alt='Google Icon' />
+          <img className='icon-form-user' src='/go.png' alt='Google Icon' />
         </span>
-        Ingresar con Google
+        Ingresa con Google
       </button>
-
-      <button className='app-register-button'>
-        <span className='icon-app'>
-          <img src='/fb.png' alt='facebook Icon' />
-        </span>
-        Ingresar con Facebook
-      </button>
-
     </div>
   )
 }

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft } from '../../components/Icons'
-import './ProfileEdit.css'
+
 import { useUser } from '../../hooks/useUser'
+import { ArrowLeft } from '../../components/Icons'
+
+import './ProfileEdit.css'
 
 export function ProfileEdit (): JSX.Element {
   const { user } = useUser()

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, Edit, FavIcon, OrdersIcon } from '../../components/Icons'
-import './Profile.css'
+
 import { useUser } from '../../hooks/useUser'
+import { ArrowLeft, ArrowRight, Edit, FavIcon, OrdersIcon } from '../../components/Icons'
+
+import './Profile.css'
 
 export function Profile (): JSX.Element {
   const { user } = useUser()
@@ -27,10 +29,10 @@ export function Profile (): JSX.Element {
 
         <div className='item-profile'>
           <div className='container-title-item'>
-            <p className='item-title'>
+            <Link to={`/settings/${userPath}/my-orders`} className='item-title'>
               <OrdersIcon />
               Mis compras
-            </p>
+            </Link>
           </div>
           <span className='icon-profile'><ArrowRight /></span>
         </div>

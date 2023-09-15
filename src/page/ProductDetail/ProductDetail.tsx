@@ -15,8 +15,6 @@ export function ProductDetail (): JSX.Element {
   const { id } = useParams()
   const idProduct = Number(id)
 
-  console.log(id)
-
   useEffect(() => {
     productService.productDetail(idProduct)
       .then((product: ProductData) => { setProduct(product) })
@@ -43,7 +41,7 @@ export function ProductDetail (): JSX.Element {
         {product?.description}
       </p>
 
-      <button onClick={() => { handleAddToCart(product as ProductData) }}>Agregar al carrito</button>
+      <button className='button-add-to-cart' onClick={() => { handleAddToCart(product as ProductData) }}>Agregar al carrito</button>
     </div>
   )
 }

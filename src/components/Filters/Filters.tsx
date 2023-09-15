@@ -1,69 +1,65 @@
 import { useId, useState } from 'react'
 
-import { type Category, type FiltersType } from '../../types'
 import { useFilters } from '../../hooks/useFilters'
+import { useProducts } from '../../hooks/useProducts'
 import { CloseIcon, FilterIcon } from '../Icons'
 
 import './Filters.css'
-import { useProducts } from '../../hooks/useProducts'
+import { type CategoryType } from '../../types'
+import { CATEGORIES } from '../../const'
 
 export function Filters (): JSX.Element {
   const { setFilters, filters } = useFilters()
   const [checked, setChecked] = useState(false)
-  // const [pendingFilters, setPendingFilters] = useState<FiltersType>(filters)
   const { products } = useProducts()
 
   const minPriceId = useId()
 
-  const handleChangeCategory = (category: string): void => {
-    const isCategorySelected = filters.category.includes(category)
+  const handleChangeCategory = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const newCategory = event.target.name
 
-    if (isCategorySelected !== false) {
-      setFilters({
+    if (CATEGORIES.includes(newCategory)) {
+      const newFilters = {
         ...filters,
-        category: filters.category.filter((c: Category) => c !== category)
-      })
-    } else {
-      setFilters({
-        ...filters,
-        category: [...filters.category, category]
-      })
+        category: newCategory as CategoryType
+      }
+
+      setFilters(newFilters)
     }
   }
 
   const handleChangePrice = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setFilters((prevState: FiltersType) => ({
-      ...prevState,
-      minPrice: Number(e.target.value)
-    }))
+    const newMinPrice = Number(e.target.value)
+
+    if (typeof newMinPrice === 'number') {
+      const newFilters = {
+        ...filters,
+        minPrice: newMinPrice
+      }
+
+      setFilters(newFilters)
+    }
   }
 
   const handleChecked = (): void => {
     setChecked(!checked)
   }
 
-  // const handleApplyFilters = (): void => {
-  //   setFilters(pendingFilters)
-  //   setChecked(false)
-  // }
-
   const className = checked
     ? 'filters-article-container'
     : 'filters-article-container-hidden'
-
-  const labelCategory = filters.category.length === 0
-    ? 'Todos'
-    : filters.category.join('/')
 
   const min = products.map(product => product.price)
   const minPrice = Math.min(...min)
   const max = products.map(product => product.price)
   const maxPrice = Math.max(...max)
 
+  console.log(filters)
+
   return (
     <div className='filters-container'>
       <div className='title-icon'>
-        <h3 className=''> {labelCategory} </h3>
+        <h3 className=''> {filters.category} </h3>
 
         <span onClick={handleChecked} className='icon-filter-container'>
           <FilterIcon />
@@ -103,8 +99,7 @@ export function Filters (): JSX.Element {
               type='checkbox'
               className='input-product'
               name='Todos'
-              checked={filters.category.includes('Todos')}
-              onChange={() => { handleChangeCategory('Todos') }}
+              onChange={handleChangeCategory}
             />
             <label className='label-product'>Todos</label>
           </div>
@@ -114,8 +109,7 @@ export function Filters (): JSX.Element {
               type='checkbox'
               className='input-product'
               name='Bermudas'
-              checked={filters.category.includes('Bermudas')}
-              onChange={() => { handleChangeCategory('Bermudas') }}
+              onChange={handleChangeCategory}
             />
             <label className='label-product'>Bermudas</label>
           </div>
@@ -125,8 +119,7 @@ export function Filters (): JSX.Element {
               type='checkbox'
               className='input-product'
               name='Bolsas'
-              checked={filters.category.includes('Bolsas')}
-              onChange={() => { handleChangeCategory('Bolsas') }}
+              onChange={handleChangeCategory}
             />
             <label className='label-product'>Bolsas</label>
           </div>
@@ -136,8 +129,7 @@ export function Filters (): JSX.Element {
               type='checkbox'
               className='input-product'
               name='Carros'
-              checked={filters.category.includes('Carros')}
-              onChange={() => { handleChangeCategory('Carros') }}
+              onChange={handleChangeCategory}
             />
             <label className='label-product'>Carros</label>
           </div>
@@ -147,8 +139,7 @@ export function Filters (): JSX.Element {
               type='checkbox'
               className='input-product'
               name='Gorros'
-              checked={filters.category.includes('Gorros')}
-              onChange={() => { handleChangeCategory('Gorros') }}
+              onChange={handleChangeCategory}
             />
             <label className='label-product'>Gorros</label>
           </div>
@@ -158,8 +149,7 @@ export function Filters (): JSX.Element {
               type='checkbox'
               className='input-product'
               name='Hierros'
-              checked={filters.category.includes('Hierros')}
-              onChange={() => { handleChangeCategory('Hierros') }}
+              onChange={handleChangeCategory}
             />
             <label className='label-product'>Hierros</label>
           </div>
@@ -169,8 +159,7 @@ export function Filters (): JSX.Element {
               type='checkbox'
               className='input-product'
               name='Pantalones'
-              checked={filters.category.includes('Pantalones')}
-              onChange={() => { handleChangeCategory('Pantalones') }}
+              onChange={handleChangeCategory}
             />
             <label className='label-product'>Pantalones</label>
           </div>
@@ -180,8 +169,7 @@ export function Filters (): JSX.Element {
               type='checkbox'
               className='input-product'
               name='Remeras'
-              checked={filters.category.includes('Remeras')}
-              onChange={() => { handleChangeCategory('Remeras') }}
+              onChange={handleChangeCategory}
             />
             <label className='label-product'>Remeras</label>
           </div>
@@ -191,14 +179,12 @@ export function Filters (): JSX.Element {
               type='checkbox'
               className='input-product'
               name='Zapatos'
-              checked={filters.category.includes('Zapatos')}
-              onChange={() => { handleChangeCategory('Zapatos') }}
+              onChange={handleChangeCategory}
             />
             <label className='label-product'>Zapatos</label>
           </div>
         </div>
 
-        {/* <button onClick={handleApplyFilters}>Aplicar</button> */}
       </article>
     </div>
   )

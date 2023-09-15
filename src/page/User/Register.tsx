@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './styles.css'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import userService from '../../services/user.ts'
 
 export function Register (): JSX.Element {
@@ -10,6 +10,10 @@ export function Register (): JSX.Element {
   const [errorMessage, setErrorMessage] = useState(null)
   const navigate = useNavigate()
 
+  const inputNameId = useId()
+  const inputEmailId = useId()
+  const inputPasswordId = useId()
+
   const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setName(e.target.value)
   }
@@ -18,14 +22,17 @@ export function Register (): JSX.Element {
     setEmail(e.target.value)
   }
 
-  const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChangePassword = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setPassword(e.target.value)
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
-    userService.create({ name, email, password })
-      .then(user => {
+    userService
+      .create({ name, email, password })
+      .then((user) => {
         console.log(user)
         // redirect to home
         navigate('/user/login')
@@ -33,7 +40,7 @@ export function Register (): JSX.Element {
         setEmail('')
         setPassword('')
       })
-      .catch(err => {
+      .catch((err) => {
         setErrorMessage(err.response.data.error)
         setTimeout(() => {
           setErrorMessage(null)
@@ -43,41 +50,67 @@ export function Register (): JSX.Element {
 
   return (
     <div className='signup-container'>
-      <h1>Nueva cuenta</h1>
+      <h1 className='title-form-user'>Nueva cuenta</h1>
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='name'>Nombre</label>
-        <input type='text' id='username' value={name} onChange={handleChangeName} name='name' placeholder='Ej.Fulanito' required />
-
-        <label htmlFor='email'>Correo electrónico</label>
+      <form className='form' onSubmit={handleSubmit}>
+        <label className='label-form' htmlFor={inputNameId}>
+          Nombre
+        </label>
         <input
-          type='email' value={email} id='email' name='email'
-          placeholder='Ej.: email@email.com' onChange={handleChangeEmail} required
+          autoFocus
+          className='input-form'
+          type='text'
+          id={inputNameId}
+          value={name}
+          onChange={handleChangeName}
+          name='name'
+          placeholder='Ej.Fulanito'
+          required
         />
-        <label htmlFor='password'>Contraseña</label>
-        <input type='password' id='password' value={password} onChange={handleChangePassword} name='password' required />
 
-        <button type='submit'>Registrarse</button>
+        <label className='label-form' htmlFor={inputEmailId}>
+          Correo electrónico
+        </label>
+        <input
+          className='input-form'
+          type='email'
+          value={email}
+          id={inputEmailId}
+          name='email'
+          placeholder='Ej.: email@email.com'
+          onChange={handleChangeEmail}
+          required
+        />
+        <label className='label-form' htmlFor={inputPasswordId}>
+          Contraseña
+        </label>
+        <input
+          className='input-form'
+          type='password'
+          id={inputPasswordId}
+          value={password}
+          onChange={handleChangePassword}
+          name='password'
+          required
+        />
+
+        <button className='button-user' type='submit'>
+          Registrarse
+        </button>
         {errorMessage ?? <p className='error-message'>{errorMessage}</p>}
       </form>
 
-      <p className='login-link'>Ya tienes cuenta? <Link to='/user/login'>Ingresa</Link></p>
+      <p className='login-link'>
+        Ya tienes cuenta? <Link to='/user/login'>Ingresa</Link>
+      </p>
       <div className='divider'>o</div>
 
       <button className='app-register-button'>
         <span className='icon-app'>
-          <img src='/go.png' alt='Google Icon' />
+          <img className='icon-form-user' src='/go.png' alt='Google Icon' />
         </span>
         Registrate con Google
       </button>
-
-      <button className='app-register-button'>
-        <span className='icon-app'>
-          <img src='/fb.png' alt='facebook Icon' />
-        </span>
-        Registrate con Facebook
-      </button>
-
     </div>
   )
 }

@@ -11,20 +11,13 @@ export function useFilters (): UseFiltersHook {
   const { filters, setFilters } = context
 
   const filterProducts = (products: ProductData[]): ProductData[] => {
-    const { category, minPrice } = filters
-
-    if (category.includes('Todos') === true || (minPrice === 0 && category.length === 0)) {
-      return products
-    }
-
-    const filteredProducts = products.filter(product => {
-      const isCategoryMatch = category.includes(product.category)
-      const isMinPriceMatch = product.price >= minPrice
-
-      return isCategoryMatch === true && isMinPriceMatch
+    return products.filter(product => {
+      return product.price >= filters.minPrice &&
+      (
+        product.category === filters.category ||
+        filters.category === 'Todos'
+      )
     })
-
-    return filteredProducts
   }
 
   return { filters, setFilters, filterProducts }

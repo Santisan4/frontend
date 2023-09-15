@@ -137,7 +137,7 @@
 
 
 
-@media (width >= 475px) {
+@media (width >= 769px) {
   .menu-button {
     display: none;
   }
@@ -178,6 +178,12 @@
     color: #2b2c34;
     display: flex;
     align-items: center;
+  }
+
+  .link-header:hover{
+    scale: 1.1;
+    background-color: cornflowerblue;
+    border-radius: 5px;
   }
 
   .user-active-container {

@@ -4,11 +4,26 @@ import './Home.css'
 
 export function Home (): JSX.Element {
   return (
-    <>
+    <div className='home'>
       <Slider />
 
+      <h3 className='title-section-home'> Destacados </h3>
       <section className='new-articles-container'>
-        <h3 className='title-section'> Destacados </h3>
+        <article className='article-container'>
+          <img className='img-article' src='new.jpeg' alt='' />
+          <strong className='title-article'>Titleist p90</strong>
+          <small className='category'>Irons</small>
+        </article>
+        <article className='article-container'>
+          <img className='img-article' src='new.jpeg' alt='' />
+          <strong className='title-article'>Titleist p90</strong>
+          <small className='category'>Irons</small>
+        </article>
+        <article className='article-container'>
+          <img className='img-article' src='new.jpeg' alt='' />
+          <strong className='title-article'>Titleist p90</strong>
+          <small className='category'>Irons</small>
+        </article>
         <article className='article-container'>
           <img className='img-article' src='new.jpeg' alt='' />
           <strong className='title-article'>Titleist p90</strong>
@@ -16,8 +31,23 @@ export function Home (): JSX.Element {
         </article>
       </section>
 
+      <h3 className='title-section-home'> Tendencias </h3>
       <section className='new-articles-container'>
-        <h3> Tendencias </h3>
+        <article className='article-container'>
+          <img className='img-article' src='zapas1.webp' alt='' />
+          <strong className='title-article'>FootJoy</strong>
+          <small className='category'>Shoes</small>
+        </article>
+        <article className='article-container'>
+          <img className='img-article' src='zapas1.webp' alt='' />
+          <strong className='title-article'>FootJoy</strong>
+          <small className='category'>Shoes</small>
+        </article>
+        <article className='article-container'>
+          <img className='img-article' src='zapas1.webp' alt='' />
+          <strong className='title-article'>FootJoy</strong>
+          <small className='category'>Shoes</small>
+        </article>
         <article className='article-container'>
           <img className='img-article' src='zapas1.webp' alt='' />
           <strong className='title-article'>FootJoy</strong>
@@ -25,8 +55,13 @@ export function Home (): JSX.Element {
         </article>
       </section>
 
+      <h3 className='title-section-home'> Ofertas </h3>
       <section className='new-articles-container'>
-        <h3> Ofertas </h3>
+        <article className='article-container'>
+          <img className='img-article' src='zapas2.webp' alt='shoes' />
+          <strong className='title-article'>FootJoy</strong>
+          <small className='category'>Shoes</small>
+        </article>
         <article className='article-container'>
           <img className='img-article' src='zapas2.webp' alt='shoes' />
           <strong className='title-article'>FootJoy</strong>
@@ -38,16 +73,14 @@ export function Home (): JSX.Element {
           <strong className='title-article'>Piluso Reversible Nike</strong>
           <small className='category'>Indumentaria - Gorra</small>
         </article>
+        <article className='article-container'>
+          <img className='img-article' src='piluso.webp' alt='fj-shoes' />
+          <strong className='title-article'>Piluso Reversible Nike</strong>
+          <small className='category'>Indumentaria - Gorra</small>
+        </article>
       </section>
 
       <footer className='footer'>
-        <div className='footer-newsletter'>
-          <h3>Newsletter</h3>
-          <form action='' className='form-newsletter'>
-            <input type='text' placeholder='Enter your email' />
-            <button>Subscribe</button>
-          </form>
-        </div>
 
         <div className='footer-social-media'>
           <a href='#'><img src='fb.png' alt='' /></a>
@@ -59,6 +92,6 @@ export function Home (): JSX.Element {
           <h3>© 2023 Eos Golf</h3>
         </div>
       </footer>
-    </>
+    </div>
   )
 }

@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { type ProductData } from '../../types'
 import { useCart } from '../../hooks/useCart'
 import { useUser } from '../../hooks/useUser'
 
-import { ArrowLeft, DeleteIcon } from '../../components/Icons'
+import { DeleteIcon } from '../../components/Icons'
 
 import './Cart.css'
 
@@ -52,9 +52,6 @@ export function Cart (): JSX.Element {
 
   return (
     <section className='cart-container'>
-      <div className='header-cart'>
-        <Link className='arrow' to='/'> <ArrowLeft /> </Link>
-      </div>
 
       <div className='items-summary-container'>
 
@@ -63,7 +60,7 @@ export function Cart (): JSX.Element {
 
           {
             totalItems === 0
-              ? <p>tu carrito esta vacio!</p>
+              ? <p className='label-empty-cart'>tu carrito esta vacio!</p>
               : cart.map(item => {
                 return (
                   <li key={item.id} className='item-container'>
@@ -95,8 +92,8 @@ export function Cart (): JSX.Element {
           <p className='items-summary-cart'>Items:  <span>{totalItems}</span></p>
           <h4 className='total-summary-cart'>Total: <span> ${totalPrice} </span></h4>
 
-          <button onClick={handleCheckout} className='button-checkout'> Confirmar carrito </button>
           <p className='error-message'>{error}</p>
+          <button onClick={handleCheckout} className='button-checkout'> Confirmar carrito </button>
 
         </div>
       </div>

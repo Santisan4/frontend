@@ -1,7 +1,9 @@
 import './App.css'
+
+import { Route, Routes } from 'react-router-dom'
+
 import { Header } from './components/Header.tsx'
 import { Home } from './page/Home/Home.tsx'
-import { Route, Routes } from 'react-router-dom'
 import { Login } from './page/User/Login.tsx'
 import { Register } from './page/User/Register.tsx'
 import { Cart } from './page/Cart/Cart.tsx'
@@ -18,6 +20,7 @@ import { Settings } from './page/Settings/Settings.tsx'
 import { Profile } from './page/Profile/Profile.tsx'
 import { ProfileEdit } from './page/ProfileEdit/ProfileEdit.tsx'
 import { NotFound } from './page/404/NotFound.tsx'
+import { Orders } from './page/Orders/Orders.tsx'
 
 function App (): JSX.Element {
   return (
@@ -31,6 +34,7 @@ function App (): JSX.Element {
         <Route path='/user/register' element={<Register />} />
         <Route path='/settings' element={<Settings />} />
         <Route path='/settings/:user' element={<Profile />} />
+        <Route path='/settings/:user/my-orders' element={<Orders />} />
         <Route path='/settings/:user/edit' element={<ProfileEdit />} />
         <Route path='/admin'>
           <Route path='dashboard' element={<Dashboard />} />

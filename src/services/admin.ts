@@ -9,8 +9,8 @@ import {
   type OrderType
 } from '../types'
 
-const baseUrl = 'http://localhost:3000/admin'
-// const baseUrl = 'https://tiendaeos-dev.fl0.io/admin'
+// const baseUrl = 'http://localhost:3000/admin'
+const baseUrl = 'https://tiendaeos-dev.fl0.io/admin'
 
 type Token = string | null
 

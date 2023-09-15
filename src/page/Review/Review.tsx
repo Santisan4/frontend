@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
+
 import { Check, LeftArrow } from '../../components/Icons'
+
 import './style.css'
 
 export function Review (): JSX.Element {
