@@ -59,7 +59,7 @@ export function OrderSummary (): JSX.Element {
         </div>
 
         <form onSubmit={handleSubmit} className='button-submit-order'>
-          <button> Pagar </button>
+          <button className='button-submit-order'> Pagar </button>
         </form>
       </div>
     </section>

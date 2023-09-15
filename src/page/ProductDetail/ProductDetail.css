@@ -92,4 +92,12 @@
   .product-review{
     padding: 10px;
   }
+
+  .button-add-to-cart {
+    background-color: cornflowerblue;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }

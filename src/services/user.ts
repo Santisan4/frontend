@@ -40,7 +40,12 @@ const create = async ({
   email: string
   password: string
 }): Promise<User> => {
-  const { data } = await axios.post(baseUrl, { name, email, password })
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  const { data } = await axios.post(baseUrl, { name, email, password }, config)
   return data
 }
 
