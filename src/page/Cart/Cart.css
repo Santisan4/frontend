@@ -121,6 +121,129 @@
   }
 }
 
+@media (476px <= width <= 768px ){
+  .cart-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Blinker', sans-serif;
+  }
+
+  .items-summary-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+    justify-content: space-between;
+  }
+
+  .cart-items {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    align-items: center;
+  }
+
+  .title-cart {
+    padding: 5px;
+  }
+
+  .item-container {
+    border-top: 1px solid black;
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .img-product-cart {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+  }
+
+  .item-container p {
+    font-family: 'Blinker', sans-serif;
+  }
+
+  .item-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .quantity-price-cart {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 20px;
+  }
+
+  .items-q {
+    display: flex;
+    padding: 5px;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+  }
+
+  .summary {
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .button-checkout {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .button-checkout:hover {
+    background-color: black;
+    color: #fff;
+    transition: all ease 0.5s;
+  }
+
+  #quantity {
+    display: flex;
+    gap: 10px;
+  }
+
+  .button-q {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10px;
+    height: 10px;
+    padding: 10px;
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
 @media (width >= 769px){
   .cart-container{
     height: 100%;

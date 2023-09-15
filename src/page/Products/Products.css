@@ -43,14 +43,57 @@
   .card-container strong {
     font-size: 1.2rem;
   }
+}
 
-  .fav-icon-container {
+@media (476px <= width  <= 7678px){
+  .section-container {
+    width: 100%;
+    /* padding: 10px 0; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 10px;
+    font-family: 'Blinker', sans-serif;
+  }
+
+  .products-container {
+    width: 100%;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    place-items: center;
+    gap: 10px 0;
+  }
+
+  .card-container {
+    text-decoration: none;
+    color: #000;
+    width: 150px;
+    /* height: 300px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .card-container img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+  }
+
+  .news {
     color: tomato;
+  }
+
+  .card-container strong {
+    font-size: 1.2rem;
   }
 }
 
 
-@media (width >= 768px){
+@media (width >= 769px){
   .section-container{
     width: 100%;
     display: flex;
